@@ -1,0 +1,79 @@
+# Supabase CLI configuration placeholder
+
+# =====================================================
+# AIR TICKET AGENCY MANAGEMENT
+# SUPABASE CONFIGURATION
+# =====================================================
+
+project_id = "air-ticket-agency-management"
+
+
+# API CONFIGURATION
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+
+# DATABASE CONFIGURATION
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[db.pooler]
+enabled = false
+
+
+# MIGRATIONS
+[db.migrations]
+enabled = true
+
+
+# SEED DATA
+[db.seed]
+enabled = false
+
+
+# AUTHENTICATION
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = [
+    "http://127.0.0.1:3000",
+    "http://localhost:3000"
+]
+
+jwt_expiry = 3600
+enable_signup = false
+
+
+# EMAIL AUTHENTICATION
+[auth.email]
+enable_signup = false
+double_confirm_changes = true
+enable_confirmations = false
+
+
+# SESSION SECURITY
+[auth.sessions]
+timebox = "24h"
+inactivity_timeout = "12h"
+
+
+# STORAGE
+[storage]
+enabled = true
+file_size_limit = "10MiB"
+
+
+# EDGE FUNCTIONS
+[functions]
+enabled = true
+
+
+# =====================================================
+# END CONFIGURATION
+# =====================================================

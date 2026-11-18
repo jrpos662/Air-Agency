@@ -1,0 +1,681 @@
+
+/* =========================================================
+   AIR TICKET AGENCY MANAGEMENT
+   TICKET SALES PAGE
+   Responsive Desktop / Tablet / Mobile
+========================================================= */
+
+/* PAGE LAYOUT */
+
+.ticket-sales-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 24px 28px;
+    min-width: 0;
+}
+
+.ticket-sales-content,
+.ticket-sales-content * {
+    box-sizing: border-box;
+}
+
+/* PAGE HEADING */
+
+.ticket-sales-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.ticket-sales-content .page-heading h2 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.ticket-sales-content .page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.ticket-sales-content .page-heading .btn {
+    min-height: 44px;
+    padding: 11px 18px;
+}
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.sale-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.sale-stat-card {
+    min-width: 0;
+    min-height: 145px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 4px 15px rgba(20, 30, 50, 0.045);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.sale-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(20, 30, 50, 0.07);
+}
+
+.sale-stat-card span {
+    display: block;
+    margin-bottom: 15px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sale-stat-card strong {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+.sale-stat-card small {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   SEARCH AND FILTER TOOLBAR
+========================================================= */
+
+.sale-toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 3px 12px rgba(20, 30, 50, 0.035);
+}
+
+.sale-search {
+    width: 100%;
+    min-width: 0;
+}
+
+.sale-search input {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #f7f8fb;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sale-search input::placeholder {
+    color: #8992a2;
+}
+
+.sale-search input:focus {
+    border-color: var(--primary);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.09);
+}
+
+.sale-filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 12px;
+}
+
+.sale-filters select,
+.sale-filters input {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    padding: 10px 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #f7f8fb;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sale-filters select:focus,
+.sale-filters input:focus {
+    border-color: var(--primary);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.09);
+}
+
+.sale-filters button {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Search button */
+
+#sale-search-button {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+}
+
+#sale-search-button:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+/* Reset button */
+
+#sale-reset-button {
+    background: #ffffff;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+#sale-reset-button:hover {
+    background: var(--primary-light);
+}
+
+/* Refresh button */
+
+#sale-refresh-button {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+#sale-refresh-button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* =========================================================
+   MESSAGE / ALERT
+========================================================= */
+
+.sale-message {
+    display: none;
+    width: 100%;
+    margin: 0 0 18px;
+    padding: 14px 17px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.sale-message.error {
+    display: block;
+    color: #991b1b;
+    background: #fee8e8;
+    border: 1px solid #fecaca;
+}
+
+.sale-message.success {
+    display: block;
+    color: #166534;
+    background: #eaf8ef;
+    border: 1px solid #bbebca;
+}
+
+.sale-message.info {
+    display: block;
+    color: #1e40af;
+    background: #eaf2ff;
+    border: 1px solid #c8dcff;
+}
+
+/* =========================================================
+   SALES RECORDS CARD
+========================================================= */
+
+.sale-table-card {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 4px 15px rgba(20, 30, 50, 0.045);
+}
+
+.sale-table-card .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sale-table-card .table-header h3 {
+    margin: 0 0 7px;
+    color: var(--text);
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.sale-table-card .table-header span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* TABLE RESPONSIVE WRAPPER */
+
+.sale-table-card .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sale-table-card .data-table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: collapse;
+}
+
+.sale-table-card .data-table th,
+.sale-table-card .data-table td {
+    padding: 15px 17px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.sale-table-card .data-table th {
+    background: #f5f6fa;
+    color: #687386;
+    font-weight: 700;
+}
+
+.sale-table-card .data-table td {
+    color: var(--text);
+}
+
+.sale-table-card .data-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.sale-table-card .data-table tbody tr:hover {
+    background: #fff8f9;
+}
+
+.sale-table-card .data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sale-table-card .table-empty {
+    padding: 35px 20px !important;
+    color: var(--muted) !important;
+    text-align: center !important;
+}
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.sale-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.sale-status.completed {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.sale-status.partially-paid {
+    background: #fff4d6;
+    color: #946200;
+}
+
+.sale-status.unpaid {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.sale-status.refunded {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.sale-status.partially-refunded {
+    background: #f3e8ff;
+    color: #7e22ce;
+}
+
+.sale-status.cancelled {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.sale-action-button {
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sale-action-button:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+}
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.sale-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 22px;
+    border-top: 1px solid var(--border);
+}
+
+.sale-pagination span {
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+.sale-pagination button {
+    min-width: 95px;
+    min-height: 38px;
+    padding: 8px 13px;
+    border-radius: 8px;
+}
+
+.sale-pagination button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+    .ticket-sales-content {
+        padding: 22px 20px;
+    }
+
+    .sale-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .sale-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    .ticket-sales-content {
+        padding: 16px 14px 24px;
+    }
+
+    .ticket-sales-content .page-heading {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 18px;
+    }
+
+    .ticket-sales-content .page-heading h2 {
+        font-size: 21px;
+    }
+
+    .ticket-sales-content .page-heading p {
+        font-size: 13px;
+    }
+
+    .ticket-sales-content .page-heading .btn {
+        width: 100%;
+        min-height: 45px;
+    }
+
+    /* Statistics */
+
+    .sale-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .sale-stat-card {
+        min-height: 130px;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .sale-stat-card span {
+        margin-bottom: 12px;
+        font-size: 12px;
+    }
+
+    .sale-stat-card strong {
+        margin-bottom: 8px;
+        font-size: 23px;
+    }
+
+    .sale-stat-card small {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    /* Toolbar */
+
+    .sale-toolbar {
+        gap: 13px;
+        margin-bottom: 16px;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .sale-search input {
+        min-height: 48px;
+        font-size: 14px;
+    }
+
+    .sale-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .sale-filters select,
+    .sale-filters input {
+        min-height: 46px;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .sale-filters button {
+        min-height: 46px;
+        font-size: 13px;
+    }
+
+    #sale-refresh-button {
+        grid-column: 1 / -1;
+    }
+
+    /* Messages */
+
+    .sale-message {
+        margin-bottom: 15px;
+        padding: 13px 14px;
+        font-size: 13px;
+    }
+
+    /* Sales table */
+
+    .sale-table-card {
+        border-radius: 16px;
+    }
+
+    .sale-table-card .table-header {
+        padding: 18px 16px;
+    }
+
+    .sale-table-card .table-header h3 {
+        font-size: 17px;
+    }
+
+    .sale-table-card .table-header span {
+        font-size: 12px;
+    }
+
+    .sale-table-card .data-table {
+        min-width: 900px;
+    }
+
+    .sale-table-card .data-table th,
+    .sale-table-card .data-table td {
+        padding: 13px 14px;
+        font-size: 12px;
+    }
+
+    /* Pagination */
+
+    .sale-pagination {
+        padding: 14px;
+        gap: 8px;
+    }
+
+    .sale-pagination button {
+        min-width: 78px;
+        min-height: 37px;
+        padding: 7px 9px;
+        font-size: 12px;
+    }
+
+    .sale-pagination span {
+        font-size: 11px;
+    }
+}
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+    .ticket-sales-content {
+        padding: 13px 10px 20px;
+    }
+
+    .sale-stats-grid {
+        gap: 9px;
+    }
+
+    .sale-stat-card {
+        padding: 13px;
+        min-height: 120px;
+    }
+
+    .sale-stat-card strong {
+        font-size: 20px;
+    }
+
+    .sale-toolbar {
+        padding: 13px;
+    }
+
+    .sale-filters {
+        gap: 8px;
+    }
+
+    .sale-filters select,
+    .sale-filters input,
+    .sale-filters button {
+        font-size: 12px;
+    }
+
+    .sale-pagination button {
+        min-width: 68px;
+        font-size: 11px;
+    }
+}
+
+
+
+.sale-date-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.sale-date-field label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sale-date-field input {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #f7f8fb;
+    color: var(--text);
+    font-size: 14px;
+}

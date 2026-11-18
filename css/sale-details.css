@@ -1,0 +1,472 @@
+
+/* =========================================
+   SALE DETAILS PAGE
+========================================= */
+
+.sale-details-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+}
+
+/* Page Heading */
+
+.sale-details-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.sale-details-content .page-heading h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.sale-details-content .page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.page-heading-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Messages */
+
+.sale-details-message {
+    display: none;
+    padding: 13px 16px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.sale-details-message.success {
+    display: block;
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+}
+
+.sale-details-message.error {
+    display: block;
+    color: #991b1b;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+/* Sale Overview */
+
+.sale-overview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+}
+
+.sale-overview-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sale-overview-main h2 {
+    margin: 6px 0 0;
+    font-size: 23px;
+    color: var(--primary);
+    overflow-wrap: anywhere;
+}
+
+.detail-label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.sale-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    background: #e5e7eb;
+    color: #374151;
+    text-transform: capitalize;
+}
+
+.sale-status.completed,
+.sale-status.issued,
+.sale-status.paid {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.sale-status.pending,
+.sale-status.partial {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.sale-status.cancelled,
+.sale-status.refunded {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.sale-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.sale-overview-grid strong {
+    display: block;
+    font-size: 13px;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+/* Main Details Grid */
+
+.sale-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    min-width: 0;
+}
+
+/* Detail Cards */
+
+.detail-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    min-width: 0;
+}
+
+.detail-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-card-header h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.detail-card-header span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.detail-card-body {
+    padding: 20px;
+}
+
+/* Detail List */
+
+.detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.detail-list > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.detail-list span {
+    color: var(--muted);
+    font-size: 12px;
+    flex: 0 0 40%;
+}
+
+.detail-list strong {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+    overflow-wrap: anywhere;
+    min-width: 0;
+}
+
+/* Passenger Table */
+
+.passenger-details-card {
+    width: 100%;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.data-table th {
+    background: var(--background);
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.data-table td {
+    color: var(--text);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+    background: var(--background);
+}
+
+.table-empty {
+    text-align: center !important;
+    color: var(--muted) !important;
+    padding: 30px 15px !important;
+}
+
+/* Payment Summary */
+
+.payment-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.payment-summary > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.payment-summary span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.payment-summary strong {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    text-align: right;
+}
+
+.payment-summary .payment-total {
+    padding: 14px;
+    background: var(--background);
+    border-radius: var(--radius-md);
+}
+
+.payment-summary .payment-total strong {
+    color: var(--primary);
+    font-size: 17px;
+}
+
+.payment-summary .payment-due {
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.payment-summary .payment-due strong {
+    color: var(--danger);
+    font-size: 17px;
+}
+
+/* Action Buttons */
+
+.sale-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.sale-action-buttons button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Print */
+
+@media print {
+    body {
+        background: #fff !important;
+    }
+
+    .sidebar,
+    .topbar,
+    .dashboard-footer,
+    .page-heading-actions,
+    .sale-action-buttons,
+    .sale-details-message {
+        display: none !important;
+    }
+
+    .app-layout,
+    .main-content {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .sale-details-content {
+        padding: 0 !important;
+        gap: 14px;
+    }
+
+    .detail-card,
+    .sale-overview-card {
+        box-shadow: none !important;
+        break-inside: avoid;
+    }
+
+    .sale-details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .table-responsive {
+        overflow: visible;
+    }
+
+    .data-table {
+        min-width: 100%;
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .sale-details-content {
+        padding: 18px;
+    }
+
+    .sale-overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sale-details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .sale-details-content {
+        padding: 14px;
+        gap: 16px;
+    }
+
+    .sale-details-content .page-heading {
+        align-items: flex-start;
+    }
+
+    .sale-details-content .page-heading h2 {
+        font-size: 19px;
+    }
+
+    .page-heading-actions {
+        width: 100%;
+    }
+
+    .page-heading-actions .btn {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .sale-overview-card {
+        padding: 16px;
+    }
+
+    .sale-overview-main h2 {
+        font-size: 19px;
+    }
+
+    .sale-overview-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 17px 12px;
+    }
+
+    .detail-card-header {
+        padding: 15px;
+    }
+
+    .detail-card-body {
+        padding: 15px;
+    }
+
+    .detail-list > div {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .detail-list span {
+        flex-basis: auto;
+    }
+
+    .detail-list strong {
+        text-align: left;
+    }
+
+    .payment-summary .payment-total {
+        padding: 12px;
+    }
+
+    .sale-action-buttons {
+        flex-direction: column;
+    }
+
+    .sale-action-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

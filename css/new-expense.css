@@ -1,0 +1,337 @@
+
+/* ========================================
+   New Expense Page
+======================================== */
+
+.new-expense-content {
+    padding: 24px;
+}
+
+/* Page Heading */
+
+.new-expense-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.new-expense-content .page-heading h2 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.new-expense-content .page-heading p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.page-heading-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Message */
+
+.new-expense-message {
+    display: none;
+    padding: 13px 16px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.new-expense-message.success {
+    display: block;
+    color: var(--success);
+    background: rgba(22, 163, 74, 0.09);
+    border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.new-expense-message.error {
+    display: block;
+    color: var(--danger);
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.new-expense-message.info {
+    display: block;
+    color: var(--info);
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+/* Form */
+
+.expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* Form Cards */
+
+.expense-form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.expense-form-card .form-card-header {
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--border);
+    background: var(--background);
+}
+
+.expense-form-card .form-card-header h3 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.expense-form-card .form-card-header p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.expense-form-card .form-card-body {
+    padding: 22px;
+}
+
+/* Form Grid */
+
+.expense-form-card .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.expense-form-card .form-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.expense-form-card .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.expense-form-card .form-group label {
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.expense-form-card .form-group label span {
+    color: var(--danger);
+}
+
+.expense-form-card .form-group input,
+.expense-form-card .form-group select,
+.expense-form-card .form-group textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 13px;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.expense-form-card .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.expense-form-card .form-group input:focus,
+.expense-form-card .form-group select:focus,
+.expense-form-card .form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.1);
+}
+
+.expense-form-card .form-group input::placeholder,
+.expense-form-card .form-group textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+.expense-form-card .form-group select:disabled {
+    background: var(--background);
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.expense-form-card .form-group small {
+    margin-top: 7px;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Expense Summary */
+
+.expense-summary-card {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 22px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.expense-summary-card > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    text-align: right;
+}
+
+.expense-summary-card span {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.expense-summary-card strong {
+    color: var(--primary);
+    font-size: 26px;
+    font-weight: 800;
+}
+
+/* Form Actions */
+
+.expense-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding-top: 4px;
+}
+
+.expense-form-actions button {
+    min-width: 130px;
+    min-height: 44px;
+}
+
+.expense-form-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .new-expense-content {
+        padding: 18px;
+    }
+
+    .new-expense-content .page-heading {
+        align-items: flex-start;
+    }
+
+    .expense-form-card .form-card-header,
+    .expense-form-card .form-card-body {
+        padding: 18px;
+    }
+
+    .expense-form-card .form-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .expense-form-card .form-group.full-width {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .new-expense-content {
+        padding: 14px;
+    }
+
+    .new-expense-content .page-heading h2 {
+        font-size: 19px;
+    }
+
+    .page-heading-actions {
+        width: 100%;
+    }
+
+    .page-heading-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .expense-form-card .form-card-header,
+    .expense-form-card .form-card-body {
+        padding: 15px;
+    }
+
+    .expense-summary-card {
+        padding: 18px;
+    }
+
+    .expense-summary-card strong {
+        font-size: 23px;
+    }
+
+    .expense-form-actions {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    .expense-form-actions button {
+        width: 100%;
+    }
+}
+
+/* Print */
+
+@media print {
+
+    .sidebar,
+    .topbar,
+    .page-heading-actions,
+    .expense-form-actions,
+    .dashboard-footer {
+        display: none !important;
+    }
+
+    .main-content {
+        margin: 0;
+        width: 100%;
+    }
+
+    .new-expense-content {
+        padding: 0;
+    }
+
+    .expense-form-card,
+    .expense-summary-card {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+}

@@ -1,0 +1,448 @@
+
+
+/* =========================================
+   CUSTOMER DETAILS PAGE
+========================================= */
+
+.customer-details-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Page Heading */
+
+.customer-details-content .page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.page-heading h2 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.page-heading-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Message */
+
+.customer-details-message {
+    display: none;
+    margin-bottom: 18px;
+    padding: 13px 15px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.customer-details-message.show {
+    display: block;
+}
+
+.customer-details-message.success {
+    color: var(--success);
+    background: rgba(22, 163, 74, 0.09);
+    border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.customer-details-message.error {
+    color: var(--danger);
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.22);
+}
+
+/* Customer Profile */
+
+.customer-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 26px;
+    margin-bottom: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.customer-profile-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: rgba(185, 28, 53, 0.10);
+    color: var(--primary);
+    font-size: 27px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.customer-profile-info {
+    min-width: 0;
+}
+
+.customer-profile-info h2 {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-size: 23px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.customer-profile-info > p {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.customer-profile-info > p strong {
+    color: var(--text);
+}
+
+.customer-profile-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+}
+
+.customer-profile-meta > span {
+    color: var(--muted);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* Status Badge */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: rgba(22, 163, 74, 0.10);
+    color: var(--success);
+    font-size: 11px !important;
+    font-weight: 700;
+}
+
+.status-badge.inactive {
+    background: rgba(220, 38, 38, 0.09);
+    color: var(--danger);
+}
+
+/* Account Summary */
+
+.customer-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.customer-summary-card {
+    min-width: 0;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.customer-summary-card span {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.customer-summary-card strong {
+    display: block;
+    color: var(--text);
+    font-size: 23px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+#customer-total-due {
+    color: var(--danger);
+}
+
+#customer-total-paid {
+    color: var(--success);
+}
+
+/* Details Cards */
+
+.customer-details-card {
+    margin-bottom: 22px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.details-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 19px 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.details-card-header h3 {
+    margin: 0;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.details-card-header p {
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.btn-sm {
+    min-height: 34px;
+    padding: 7px 12px;
+    font-size: 12px;
+}
+
+/* Personal Information */
+
+.customer-information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 10px 22px;
+}
+
+.information-item {
+    min-width: 0;
+    padding: 16px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.information-item:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+
+.information-item span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.information-item strong {
+    display: block;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.information-item.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Tables */
+
+.customer-details-card .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.customer-details-card .data-table {
+    width: 100%;
+    min-width: 750px;
+    border-collapse: collapse;
+}
+
+.customer-details-card .data-table th,
+.customer-details-card .data-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.customer-details-card .data-table th {
+    background: var(--background);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.customer-details-card .data-table td {
+    color: var(--text);
+}
+
+.customer-details-card .data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.customer-details-card .data-table tbody tr:hover {
+    background: rgba(185, 28, 53, 0.025);
+}
+
+.customer-details-card .empty-state {
+    padding: 30px 15px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* Notes */
+
+.customer-notes-content {
+    padding: 20px 22px;
+}
+
+.customer-notes-content p {
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Disabled Button */
+
+.page-heading-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+/* Tablet */
+
+@media (max-width: 992px) {
+    .customer-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .customer-details-content {
+        padding: 20px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+    .customer-details-content {
+        padding: 13px;
+    }
+
+    .customer-details-content .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-heading h2 {
+        font-size: 20px;
+    }
+
+    .page-heading-actions {
+        width: 100%;
+    }
+
+    .page-heading-actions .btn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .customer-profile-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+        padding: 19px;
+    }
+
+    .customer-profile-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 23px;
+    }
+
+    .customer-profile-info h2 {
+        font-size: 20px;
+    }
+
+    .customer-profile-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .customer-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .customer-summary-card {
+        padding: 15px 12px;
+    }
+
+    .customer-summary-card strong {
+        font-size: 19px;
+    }
+
+    .customer-information-grid {
+        grid-template-columns: 1fr;
+        padding: 8px 16px;
+    }
+
+    .information-item,
+    .information-item:nth-last-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .information-item:last-child {
+        border-bottom: none;
+    }
+
+    .information-item.full-width {
+        grid-column: auto;
+    }
+
+    .details-card-header {
+        padding: 16px;
+    }
+
+    .customer-notes-content {
+        padding: 17px;
+    }
+}
+
+@media (max-width: 360px) {
+    .customer-summary-grid {
+        grid-template-columns: 1fr;
+    }
+}

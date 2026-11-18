@@ -1,0 +1,421 @@
+
+/* =========================================
+   NEW CUSTOMER PAYMENT PAGE
+========================================= */
+
+.new-customer-payment-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Page Heading */
+
+.new-customer-payment-content .page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.new-customer-payment-content .page-heading h2 {
+    margin: 0 0 7px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.new-customer-payment-content .page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Form Cards */
+
+.payment-form-card {
+    margin-bottom: 20px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-card-header {
+    padding: 19px 22px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.form-card-header h3 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.form-card-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.form-card-body {
+    padding: 22px;
+}
+
+/* Form Grid */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 19px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.required {
+    color: var(--danger);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.10);
+}
+
+.form-group input[readonly] {
+    background: var(--background);
+    color: var(--muted);
+    cursor: not-allowed;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.75;
+}
+
+/* Allocation Header */
+
+.allocation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.allocation-header > div {
+    min-width: 0;
+}
+
+/* Allocation Rows */
+
+#allocation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.allocation-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(160px, 1fr) auto;
+    align-items: end;
+    gap: 14px;
+    padding: 16px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.allocation-sale,
+.allocation-amount {
+    min-width: 0;
+}
+
+.allocation-row .remove-allocation-button {
+    min-height: 42px;
+    white-space: nowrap;
+}
+
+.allocation-row .remove-allocation-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Allocation Summary */
+
+.allocation-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+    padding: 17px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.allocation-summary > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.allocation-summary span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.allocation-summary strong {
+    color: var(--text);
+    font-size: 19px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+#allocation-unallocated {
+    color: var(--primary);
+}
+
+.allocation-help {
+    margin: 13px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* Messages */
+
+.new-payment-message {
+    display: none;
+    margin-bottom: 18px;
+    padding: 13px 16px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.new-payment-message.show {
+    display: block;
+}
+
+.new-payment-message.success {
+    color: var(--success);
+    background: rgba(22, 163, 74, 0.09);
+    border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.new-payment-message.error {
+    color: var(--danger);
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.22);
+}
+
+.new-payment-message.warning {
+    color: var(--warning);
+    background: rgba(217, 119, 6, 0.08);
+    border: 1px solid rgba(217, 119, 6, 0.22);
+}
+
+/* Form Actions */
+
+.payment-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 22px 0 28px;
+}
+
+.payment-form-actions .btn {
+    min-width: 115px;
+    min-height: 42px;
+}
+
+/* Disabled and Loading States */
+
+#save-customer-payment-button:disabled,
+#add-allocation-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Focus Accessibility */
+
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible,
+.payment-form-actions .btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .new-customer-payment-content {
+        padding: 20px;
+    }
+
+    .allocation-row {
+        grid-template-columns: minmax(0, 1fr) minmax(150px, 0.8fr);
+    }
+
+    .allocation-row .remove-allocation-button {
+        grid-column: 1 / -1;
+        justify-self: end;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+    .new-customer-payment-content {
+        padding: 13px;
+    }
+
+    .new-customer-payment-content .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .new-customer-payment-content .page-heading > a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .new-customer-payment-content .page-heading h2 {
+        font-size: 20px;
+    }
+
+    .form-card-header {
+        padding: 16px;
+    }
+
+    .form-card-body {
+        padding: 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .allocation-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .allocation-header button {
+        width: 100%;
+    }
+
+    .allocation-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 13px;
+    }
+
+    .allocation-row .remove-allocation-button {
+        grid-column: auto;
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .allocation-summary {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 15px;
+    }
+
+    .allocation-summary > div {
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .allocation-summary > div:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .allocation-summary strong {
+        font-size: 18px;
+    }
+
+    .payment-form-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .payment-form-actions .btn {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #save-customer-payment-button {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+}
+
+/* Small Mobile */
+
+@media (max-width: 360px) {
+    .payment-form-actions {
+        grid-template-columns: 1fr;
+    }
+
+    #save-customer-payment-button {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}

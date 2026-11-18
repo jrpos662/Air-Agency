@@ -1,0 +1,384 @@
+
+/* ========================================
+   Cash Transaction Details
+======================================== */
+
+.cash-transaction-details-content {
+    padding: 24px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* Page Heading */
+
+.cash-transaction-details-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.page-heading h2 {
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary, #1f2937);
+}
+
+.page-heading p {
+    margin: 0;
+    color: var(--text-muted, #6b7280);
+    font-size: 14px;
+}
+
+.page-heading-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Message */
+
+#cash-transaction-details-message {
+    margin-bottom: 18px;
+}
+
+#cash-transaction-details-message:empty {
+    display: none;
+}
+
+/* ========================================
+   Transaction Overview
+======================================== */
+
+.transaction-detail-overview {
+    background: var(--surface, #ffffff);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
+}
+
+.transaction-overview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.overview-label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-muted, #6b7280);
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.transaction-overview-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary, #1f2937);
+    overflow-wrap: anywhere;
+}
+
+.transaction-detail-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    background: var(--info-light, #e0f2fe);
+    color: var(--info, #0284c7);
+}
+
+.transaction-overview-amount {
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-primary, #111827);
+    margin: 10px 0 22px;
+    overflow-wrap: anywhere;
+}
+
+.transaction-overview-footer {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border, #e5e7eb);
+}
+
+.transaction-overview-footer > div {
+    min-width: 0;
+}
+
+.transaction-overview-footer span {
+    display: block;
+    color: var(--text-muted, #6b7280);
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.transaction-overview-footer strong {
+    display: block;
+    color: var(--text-primary, #1f2937);
+    font-size: 14px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+/* ========================================
+   Detail Cards
+======================================== */
+
+.transaction-detail-card {
+    background: var(--surface, #ffffff);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.035);
+}
+
+.details-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border, #e5e7eb);
+}
+
+.details-card-heading h3 {
+    margin: 0;
+    color: var(--text-primary, #1f2937);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.details-card-heading i,
+.details-card-heading .icon {
+    color: var(--primary, #b91c35);
+    font-size: 19px;
+}
+
+/* Detail Grid */
+
+.transaction-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px 20px;
+}
+
+.detail-item {
+    min-width: 0;
+}
+
+.detail-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.detail-item > span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted, #6b7280);
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.detail-item strong {
+    display: block;
+    color: var(--text-primary, #1f2937);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Description */
+
+#detail-transaction-description {
+    padding: 12px 14px;
+    background: var(--background, #f8fafc);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 10px;
+    min-height: 45px;
+}
+
+/* ========================================
+   Linked Transfer
+======================================== */
+
+#linked-transfer-card {
+    border-color: rgba(2, 132, 199, 0.25);
+}
+
+#linked-transfer-card[hidden] {
+    display: none !important;
+}
+
+#view-linked-transfer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+#view-linked-transfer:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   Buttons
+======================================== */
+
+.page-heading-actions .btn {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* ========================================
+   Responsive
+======================================== */
+
+@media (max-width: 1100px) {
+    .transaction-detail-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .cash-transaction-details-content {
+        padding: 16px;
+    }
+
+    .cash-transaction-details-content .page-heading {
+        align-items: flex-start;
+    }
+
+    .page-heading h2 {
+        font-size: 21px;
+    }
+
+    .page-heading-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .page-heading-actions .btn {
+        width: 100%;
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+
+    .transaction-detail-overview {
+        padding: 19px;
+        border-radius: 14px;
+    }
+
+    .transaction-overview-amount {
+        font-size: 32px;
+    }
+
+    .transaction-overview-footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 17px 12px;
+    }
+
+    .transaction-detail-card {
+        padding: 18px;
+    }
+
+    .transaction-detail-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .cash-transaction-details-content {
+        padding: 12px;
+    }
+
+    .transaction-overview-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .transaction-detail-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 10px;
+    }
+
+    .detail-item strong {
+        font-size: 13px;
+    }
+
+    .transaction-detail-card {
+        padding: 15px;
+    }
+
+    .details-card-heading h3 {
+        font-size: 15px;
+    }
+}
+
+/* ========================================
+   Print
+======================================== */
+
+@media print {
+    body {
+        background: #ffffff !important;
+    }
+
+    .sidebar,
+    .topbar,
+    .page-heading-actions,
+    #refresh-cash-transaction,
+    #print-cash-transaction,
+    #view-linked-transfer {
+        display: none !important;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .cash-transaction-details-content {
+        padding: 0;
+        max-width: none;
+    }
+
+    .transaction-detail-overview,
+    .transaction-detail-card {
+        box-shadow: none;
+        break-inside: avoid;
+        border: 1px solid #ddd;
+    }
+
+    .transaction-detail-overview,
+    .transaction-detail-card {
+        margin-bottom: 14px;
+    }
+}

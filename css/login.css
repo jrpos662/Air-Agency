@@ -1,0 +1,393 @@
+/* Page-specific styles: login */
+
+/* =========================================
+   AIR TICKET AGENCY MANAGEMENT
+   LOGIN PAGE STYLESHEET
+========================================= */
+
+:root {
+    --login-primary: #b91c35;
+    --login-primary-dark: #95152a;
+    --login-text: #202633;
+    --login-muted: #737d8e;
+    --login-border: #e2e6ed;
+    --login-background: #f3f5f9;
+    --login-white: #ffffff;
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.login-page {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--login-background);
+    color: var(--login-text);
+}
+
+/* MAIN CONTAINER */
+
+.login-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 25px;
+}
+
+/* LEFT BRAND SECTION */
+
+.login-brand {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 65px;
+    overflow: hidden;
+    color: var(--login-white);
+    background: linear-gradient(
+        145deg,
+        #c91f36 0%,
+        #a5162d 55%,
+        #761124 100%
+    );
+    border-radius: 20px;
+}
+
+.login-brand::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    right: -150px;
+    bottom: -180px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+}
+
+.login-brand::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    right: -90px;
+    bottom: -120px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+}
+
+/* LOGO */
+
+.brand-logo,
+.mobile-logo {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.brand-logo {
+    color: var(--login-primary);
+    background: var(--login-white);
+}
+
+/* BRAND TEXT */
+
+.brand-label {
+    margin-top: 35px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffe0e5;
+}
+
+.login-brand h1 {
+    max-width: 550px;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+}
+
+.brand-description {
+    max-width: 480px;
+    margin-top: 22px;
+    color: rgba(255,255,255,0.82);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.brand-footer {
+    margin-top: 65px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+}
+
+/* RIGHT CONTENT */
+
+.login-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: var(--login-white);
+    border-radius: 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 410px;
+}
+
+.mobile-logo {
+    display: none;
+    margin-bottom: 30px;
+    color: #ffffff;
+    background: var(--login-primary);
+}
+
+/* HEADINGS */
+
+.welcome-label {
+    margin-bottom: 12px;
+    color: var(--login-primary);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.login-card h2 {
+    font-size: 30px;
+    line-height: 1.3;
+    letter-spacing: -0.8px;
+}
+
+.login-description {
+    margin-top: 12px;
+    color: var(--login-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* FORM */
+
+#login-form {
+    margin-top: 32px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--login-text);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group input {
+    width: 100%;
+    height: 51px;
+    padding: 0 15px;
+    border: 1px solid var(--login-border);
+    border-radius: 9px;
+    outline: none;
+    background: #ffffff;
+    color: var(--login-text);
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #a0a8b5;
+}
+
+.form-group input:focus {
+    border-color: var(--login-primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.10);
+}
+
+/* LOGIN BUTTON */
+
+.login-button {
+    width: 100%;
+    min-height: 51px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 9px;
+    background: var(--login-primary);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.login-button:hover {
+    background: var(--login-primary-dark);
+}
+
+.login-button:active {
+    transform: scale(0.99);
+}
+
+.login-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* LOGIN STATUS */
+
+.login-status {
+    min-height: 24px;
+    margin-top: 15px;
+    color: var(--login-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.login-status.error {
+    color: #c62828;
+}
+
+.login-status.success {
+    color: #16804a;
+}
+
+/* BOTTOM SECTION */
+
+.login-bottom {
+    margin-top: 35px;
+    padding-top: 22px;
+    border-top: 1px solid var(--login-border);
+}
+
+.login-bottom a {
+    color: var(--login-primary);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-bottom a:hover {
+    text-decoration: underline;
+}
+
+.login-bottom p {
+    margin-top: 18px;
+    color: var(--login-muted);
+    font-size: 11px;
+}
+
+/* TABLET RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+    .login-container {
+        grid-template-columns: 0.85fr 1fr;
+        padding: 15px;
+    }
+
+    .login-brand {
+        padding: 35px;
+    }
+
+    .login-content {
+        padding: 25px;
+    }
+
+    .login-brand h1 {
+        font-size: 36px;
+    }
+
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .login-container {
+        display: block;
+        padding: 0;
+    }
+
+    .login-brand {
+        display: none;
+    }
+
+    .login-content {
+        min-height: 100vh;
+        padding: 35px 24px;
+        border-radius: 0;
+    }
+
+    .login-card {
+        max-width: 450px;
+    }
+
+    .mobile-logo {
+        display: flex;
+    }
+
+    .login-card h2 {
+        font-size: 27px;
+    }
+
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+
+    .login-content {
+        padding: 25px 18px;
+    }
+
+    .login-card h2 {
+        font-size: 24px;
+    }
+
+    .form-group input,
+    .login-button {
+        height: 48px;
+    }
+
+}
+
+/* Center Login Page Logos */
+
+.login-brand .brand-logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mobile-logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Center branding text */
+.login-brand {
+    text-align: center;
+}
+
+.login-brand h1,
+.login-brand .brand-description {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.brand-footer {
+    text-align: center;
+}

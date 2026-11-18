@@ -1,0 +1,295 @@
+
+/* =========================================
+   NEW TICKET SALE PAGE
+   File: css/new-ticket-sale.css
+========================================= */
+
+.new-ticket-sale-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.new-ticket-sale-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.new-ticket-sale-content .page-heading h2 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 24px;
+}
+
+.new-ticket-sale-content .page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Form Cards */
+
+.sale-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sale-form-card {
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-card-header h3 {
+    margin: 0;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.form-card-header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.form-card-body {
+    padding: 22px 20px;
+}
+
+/* Form Grid */
+
+.new-ticket-sale-content .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.new-ticket-sale-content .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.new-ticket-sale-content .form-group label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.new-ticket-sale-content .form-group label span {
+    color: var(--danger);
+}
+
+.new-ticket-sale-content .form-group input,
+.new-ticket-sale-content .form-group select,
+.new-ticket-sale-content .form-group textarea {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--background);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.new-ticket-sale-content .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.new-ticket-sale-content .form-group input:focus,
+.new-ticket-sale-content .form-group select:focus,
+.new-ticket-sale-content .form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.09);
+}
+
+.new-ticket-sale-content .form-group input:read-only {
+    background: var(--background);
+    color: var(--muted);
+    cursor: not-allowed;
+}
+
+.new-ticket-sale-content .form-group input::placeholder,
+.new-ticket-sale-content .form-group textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.8;
+}
+
+/* Passenger Cards */
+
+.sale-passenger-card {
+    padding: 18px;
+    margin-bottom: 15px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.sale-passenger-card:last-child {
+    margin-bottom: 0;
+}
+
+.passenger-card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.passenger-card-heading strong {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.remove-sale-passenger-button {
+    padding: 7px 11px;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius);
+    background: #fee2e2;
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.remove-sale-passenger-button:hover {
+    background: #fecaca;
+}
+
+/* Selling Information */
+
+.new-ticket-sale-content #selling-total,
+.new-ticket-sale-content #discount-amount,
+.new-ticket-sale-content #initial-payment {
+    font-weight: 600;
+}
+
+/* Form Actions */
+
+.sale-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.sale-form-actions .btn {
+    min-width: 145px;
+    justify-content: center;
+}
+
+/* Messages */
+
+.new-sale-message {
+    display: none;
+    margin-bottom: 18px;
+    padding: 13px 15px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.new-sale-message.error {
+    display: block;
+    color: #991b1b;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+.new-sale-message.success {
+    display: block;
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+}
+
+.new-sale-message.info {
+    display: block;
+    color: #1e40af;
+    background: #dbeafe;
+    border: 1px solid #bfdbfe;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .new-ticket-sale-content {
+        padding: 16px;
+    }
+
+    .new-ticket-sale-content .page-heading {
+        align-items: flex-start;
+    }
+
+    .new-ticket-sale-content .page-heading h2 {
+        font-size: 21px;
+    }
+
+    .form-card-header,
+    .form-card-body {
+        padding: 16px;
+    }
+
+    .new-ticket-sale-content .form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-ticket-sale-content {
+        padding: 12px;
+    }
+
+    .new-ticket-sale-content .page-heading > a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form-card-header {
+        align-items: flex-start;
+    }
+
+    .sale-form-actions {
+        flex-direction: column-reverse;
+        padding: 15px;
+    }
+
+    .sale-form-actions .btn {
+        width: 100%;
+    }
+
+    .passenger-card-heading {
+        align-items: flex-start;
+    }
+}

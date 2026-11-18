@@ -1,0 +1,420 @@
+
+/* ========================================
+   EXPENSES PAGE
+======================================== */
+
+.expenses-content {
+    padding: 24px;
+}
+
+/* ========================================
+   PAGE HEADING
+======================================== */
+
+.expenses-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.expenses-content .page-heading h2 {
+    margin: 0 0 6px;
+    font-size: 23px;
+    color: var(--text);
+}
+
+.expenses-content .page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.page-heading-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.page-heading-actions .btn {
+    min-height: 44px;
+}
+
+/* ========================================
+   MESSAGES
+======================================== */
+
+.expenses-message {
+    margin-bottom: 16px;
+}
+
+.expenses-message:empty {
+    display: none;
+}
+
+/* ========================================
+   SUMMARY CARDS
+======================================== */
+
+.expenses-stats {
+    margin-bottom: 22px;
+}
+
+.expenses-stats .stat-card {
+    min-width: 0;
+}
+
+.expenses-stats .stat-info h3 {
+    margin: 10px 0 5px;
+    font-size: 23px;
+    overflow-wrap: anywhere;
+}
+
+.expenses-stats .stat-info small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* ========================================
+   SEARCH & FILTER CARD
+======================================== */
+
+.expenses-filter-card {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-sm);
+}
+
+.expenses-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px 14px;
+}
+
+.expenses-filter-grid .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+}
+
+.expenses-filter-grid label {
+    display: block;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.expenses-filter-grid input,
+.expenses-filter-grid select {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.expenses-filter-grid input:focus,
+.expenses-filter-grid select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.10);
+}
+
+.expenses-filter-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.expenses-filter-actions .btn {
+    min-width: 105px;
+    min-height: 44px;
+    border-radius: 10px;
+}
+
+/* ========================================
+   EXPENSE TABLE CARD
+======================================== */
+
+.expenses-table-card {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.expenses-table-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.expenses-table-header h3 {
+    margin: 0 0 5px;
+    font-size: 17px;
+    color: var(--text);
+}
+
+.expenses-table-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Table Responsive */
+
+.expenses-table-card .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.expenses-table-card .data-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+}
+
+.expenses-table-card .data-table th,
+.expenses-table-card .data-table td {
+    padding: 13px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.expenses-table-card .data-table th {
+    background: var(--background);
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.expenses-table-card .data-table td {
+    color: var(--text);
+}
+
+.expenses-table-card .data-table tbody tr:hover {
+    background: var(--background);
+}
+
+.expenses-table-card .empty-cell {
+    padding: 30px 15px;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* ========================================
+   TABLE ELEMENTS
+======================================== */
+
+.expense-reference {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.expense-amount {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.expense-method {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.expense-action-button {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s ease;
+}
+
+.expense-action-button:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* ========================================
+   TABLE FOOTER & PAGINATION
+======================================== */
+
+.expenses-table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 15px 20px;
+}
+
+.expenses-table-footer > span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.expenses-table-footer .pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.expenses-table-footer .pagination span {
+    color: var(--muted);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* ========================================
+   TABLET RESPONSIVE
+======================================== */
+
+@media (max-width: 1100px) {
+    .expenses-filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+    .expenses-content {
+        padding: 16px;
+    }
+
+    .expenses-stats .stat-info h3 {
+        font-size: 19px;
+    }
+
+    .expenses-filter-card {
+        padding: 18px;
+    }
+
+    .expenses-filter-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .expenses-content {
+        padding: 12px;
+    }
+
+    .expenses-content .page-heading {
+        align-items: stretch;
+    }
+
+    .expenses-content .page-heading h2 {
+        font-size: 20px;
+    }
+
+    .page-heading-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .page-heading-actions .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Summary */
+
+    .expenses-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .expenses-stats .stat-card {
+        padding: 13px;
+    }
+
+    .expenses-stats .stat-info h3 {
+        font-size: 17px;
+    }
+
+    /* Search Card */
+
+    .expenses-filter-card {
+        padding: 18px 16px;
+        border-radius: 12px;
+    }
+
+    .expenses-filter-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .expenses-filter-grid label {
+        font-size: 15px;
+    }
+
+    .expenses-filter-grid input,
+    .expenses-filter-grid select {
+        height: 44px;
+        font-size: 15px;
+    }
+
+    .expenses-filter-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .expenses-filter-actions .btn {
+        width: 100%;
+        min-width: 0;
+        min-height: 48px;
+    }
+
+    /* Table */
+
+    .expenses-table-header {
+        padding: 15px;
+    }
+
+    .expenses-table-footer {
+        padding: 13px;
+    }
+
+    .expenses-table-footer .pagination {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

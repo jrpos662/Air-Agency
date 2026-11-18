@@ -1,0 +1,936 @@
+
+
+/* =====================================================
+   ACCOUNT TRANSFER HISTORY
+   Page-specific styles
+===================================================== */
+
+.transfer-history-content {
+    padding: 24px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Page Heading */
+
+.transfer-history-content .page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.transfer-history-content .page-heading h2 {
+    margin: 0 0 6px;
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.transfer-history-content .page-heading p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.heading-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Message */
+
+.transfer-history-message {
+    display: none;
+    padding: 12px 15px;
+    margin-bottom: 18px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+}
+
+.transfer-history-message.show {
+    display: block;
+}
+
+.transfer-history-message.success {
+    color: var(--success);
+    background: var(--success-light);
+    border: 1px solid var(--success);
+}
+
+.transfer-history-message.error {
+    color: var(--danger);
+    background: var(--danger-light);
+    border: 1px solid var(--danger);
+}
+
+.transfer-history-message.info {
+    color: var(--info);
+    background: var(--info-light);
+    border: 1px solid var(--info);
+}
+
+/* Filter Card */
+
+.transfer-filter-card {
+    padding: 20px;
+    margin-bottom: 22px;
+}
+
+.transfer-filter-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(220px, 2fr)
+        repeat(2, minmax(150px, 1fr))
+        auto;
+    align-items: end;
+    gap: 15px;
+}
+
+.transfer-filter-grid .form-group {
+    margin: 0;
+    min-width: 0;
+}
+
+.transfer-filter-grid label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.transfer-filter-grid input {
+    width: 100%;
+    min-height: 43px;
+}
+
+.transfer-filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.transfer-filter-actions .btn {
+    min-height: 43px;
+}
+
+/* Table Card */
+
+.transfer-table-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.table-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.table-card-header h3 {
+    margin: 0 0 5px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.table-card-header p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.transfer-table-card .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.transfer-table-card .data-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.transfer-table-card .data-table th,
+.transfer-table-card .data-table td {
+    padding: 14px 15px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.transfer-table-card .data-table th {
+    background: var(--background);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.35px;
+}
+
+.transfer-table-card .data-table td {
+    color: var(--text);
+    font-size: 13px;
+}
+
+.transfer-table-card .data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.transfer-table-card .data-table tbody tr:hover {
+    background: var(--background);
+}
+
+.transfer-table-card .table-empty {
+    padding: 35px 15px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* Amount */
+
+.transfer-amount {
+    color: var(--success);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Reference */
+
+.transfer-reference {
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Notes */
+
+.transfer-notes {
+    display: inline-block;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text-muted);
+}
+
+/* Action */
+
+.transfer-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.transfer-action .btn {
+    white-space: nowrap;
+}
+
+/* Pagination */
+
+.transfer-table-card .table-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.pagination-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagination-actions button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+    .transfer-filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .transfer-filter-actions {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 700px) {
+    .transfer-history-content {
+        padding: 16px;
+    }
+
+    .transfer-history-content .page-heading {
+        align-items: flex-start;
+    }
+
+    .transfer-history-content .page-heading h2 {
+        font-size: 20px;
+    }
+
+    .heading-actions {
+        width: 100%;
+    }
+
+    .heading-actions .btn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .transfer-filter-card {
+        padding: 15px;
+    }
+
+    .transfer-filter-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .transfer-filter-actions {
+        grid-column: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .table-card-header {
+        padding: 16px;
+    }
+
+    .transfer-table-card .table-pagination {
+        padding: 14px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pagination-actions {
+        justify-content: space-between;
+    }
+
+    .pagination-actions .btn {
+        flex: 1;
+    }
+}
+
+@media (max-width: 380px) {
+    .transfer-history-content {
+        padding: 12px;
+    }
+
+    .heading-actions {
+        flex-direction: column;
+    }
+
+    .heading-actions .btn {
+        width: 100%;
+    }
+}
+
+
+
+
+/* =====================================================
+   ACCOUNT TRANSFER HISTORY
+   Responsive Desktop + Mobile Design
+===================================================== */
+
+.transfer-history-content {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 22px;
+}
+
+/* Page Heading */
+
+.transfer-history-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.transfer-history-content .page-heading h2 {
+    margin: 0 0 5px;
+    font-size: 22px;
+    color: var(--text);
+}
+
+.transfer-history-content .page-heading p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.heading-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.heading-actions .btn {
+    min-height: 40px;
+    padding: 9px 16px;
+}
+
+/* Message */
+
+.transfer-history-message {
+    display: none;
+    padding: 12px 15px;
+    margin-bottom: 16px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+}
+
+.transfer-history-message.show {
+    display: block;
+}
+
+.transfer-history-message.success {
+    color: var(--success);
+    background: var(--success-light);
+}
+
+.transfer-history-message.error {
+    color: var(--danger);
+    background: var(--danger-light);
+}
+
+.transfer-history-message.info {
+    color: var(--info);
+    background: var(--info-light);
+}
+
+/* Search Card */
+
+.transfer-filter-card {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.transfer-filter-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 14px;
+    align-items: end;
+}
+
+.transfer-filter-grid .form-group {
+    min-width: 0;
+    margin: 0;
+}
+
+.transfer-filter-grid label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.transfer-filter-grid input {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    font-size: 14px;
+    padding: 9px 12px;
+    border-radius: 8px;
+}
+
+.transfer-filter-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.transfer-filter-actions .btn {
+    min-height: 42px;
+    padding: 9px 16px;
+    white-space: nowrap;
+}
+
+/* Transfer Table */
+
+.transfer-table-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.table-card-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.table-card-header h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.table-card-header p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.transfer-table-card .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.transfer-table-card .data-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+}
+
+.transfer-table-card .data-table th,
+.transfer-table-card .data-table td {
+    padding: 13px 15px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+}
+
+.transfer-table-card .data-table th {
+    background: var(--background);
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.transfer-table-card .data-table td {
+    color: var(--text);
+}
+
+.transfer-table-card .data-table tbody tr:hover {
+    background: var(--background);
+}
+
+.transfer-table-card .table-empty {
+    text-align: center;
+    padding: 30px 15px;
+    color: var(--text-muted);
+}
+
+.transfer-amount {
+    font-weight: 700;
+    color: var(--success);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.transfer-reference {
+    font-weight: 600;
+}
+
+.transfer-notes {
+    display: inline-block;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text-muted);
+}
+
+/* Pagination */
+
+.transfer-table-card .table-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.pagination-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination-actions .btn {
+    min-height: 36px;
+    padding: 7px 13px;
+}
+
+.pagination-actions button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+    .transfer-filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .transfer-filter-actions {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+    .transfer-history-content {
+        padding: 14px;
+    }
+
+    .transfer-history-content .page-heading {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .transfer-history-content .page-heading h2 {
+        font-size: 19px;
+    }
+
+    .transfer-history-content .page-heading p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .heading-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .heading-actions .btn {
+        width: 100%;
+        min-height: 42px;
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    .transfer-filter-card {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .transfer-filter-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .transfer-filter-grid label {
+        font-size: 13px;
+    }
+
+    .transfer-filter-grid input {
+        min-height: 42px;
+        font-size: 14px;
+    }
+
+    .transfer-filter-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .transfer-filter-actions .btn {
+        width: 100%;
+        min-height: 42px;
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    .table-card-header {
+        padding: 16px;
+    }
+
+    .table-card-header h3 {
+        font-size: 17px;
+    }
+
+    .transfer-table-card .data-table {
+        min-width: 780px;
+    }
+
+    .transfer-table-card .data-table th,
+    .transfer-table-card .data-table td {
+        padding: 12px;
+    }
+
+    .transfer-table-card .table-pagination {
+        padding: 14px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pagination-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Small Mobile */
+
+@media (max-width: 380px) {
+    .transfer-history-content {
+        padding: 10px;
+    }
+
+    .heading-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .transfer-filter-card {
+        padding: 13px;
+    }
+
+    .transfer-filter-actions {
+        gap: 7px;
+    }
+
+    .transfer-table-card .data-table {
+        min-width: 740px;
+    }
+}
+
+
+
+/* =========================================
+   PREMIUM MOBILE FILTER DESIGN
+   Date From + Date To Side by Side
+========================================= */
+
+@media (max-width: 700px) {
+
+    .transfer-history-content {
+        padding: 14px;
+    }
+
+    /* Heading */
+
+    .transfer-history-content .page-heading {
+        gap: 14px;
+        margin-bottom: 18px;
+    }
+
+    .transfer-history-content .page-heading h2 {
+        font-size: 20px;
+        font-weight: 750;
+        letter-spacing: -0.4px;
+    }
+
+    .transfer-history-content .page-heading p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* Heading Buttons */
+
+    .heading-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
+    }
+
+    .heading-actions .btn {
+        min-height: 44px;
+        border-radius: 11px;
+        font-size: 14px;
+        font-weight: 650;
+        padding: 10px 8px;
+    }
+
+    /* Filter Card */
+
+    .transfer-filter-card {
+        padding: 17px;
+        margin-bottom: 18px;
+        border: 1px solid var(--border);
+        border-radius: 17px;
+        box-shadow: 0 4px 18px rgba(20, 30, 50, 0.045);
+    }
+
+    /* Two-column filter layout */
+
+    .transfer-filter-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px 11px;
+        align-items: end;
+    }
+
+    /* Search takes full width */
+
+    .transfer-filter-grid > .form-group:first-child {
+        grid-column: 1 / -1;
+    }
+
+    /* Date From and Date To side by side */
+
+    .transfer-filter-grid > .form-group:nth-child(2),
+    .transfer-filter-grid > .form-group:nth-child(3) {
+        grid-column: auto;
+        min-width: 0;
+    }
+
+    .transfer-filter-grid .form-group {
+        margin: 0;
+    }
+
+    .transfer-filter-grid label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 650;
+        color: var(--text);
+    }
+
+    .transfer-filter-grid input {
+        width: 100%;
+        min-width: 0;
+        height: 45px;
+        min-height: 45px;
+        padding: 9px 10px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 13px;
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .transfer-filter-grid input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.10);
+    }
+
+    /* Search and Reset buttons */
+
+    .transfer-filter-actions {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 2px;
+    }
+
+    .transfer-filter-actions .btn {
+        width: 100%;
+        min-height: 45px;
+        border-radius: 11px;
+        font-size: 14px;
+        font-weight: 650;
+    }
+
+    /* Transfer Records Card */
+
+    .transfer-table-card {
+        border-radius: 17px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(20, 30, 50, 0.045);
+    }
+
+    .table-card-header {
+        padding: 18px;
+    }
+
+    .table-card-header h3 {
+        font-size: 18px;
+        font-weight: 750;
+    }
+
+    .table-card-header p {
+        margin-top: 5px;
+        font-size: 13px;
+    }
+
+    /* Table */
+
+    .transfer-table-card .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .transfer-table-card .data-table {
+        min-width: 780px;
+    }
+
+    .transfer-table-card .data-table th,
+    .transfer-table-card .data-table td {
+        padding: 13px 14px;
+        font-size: 13px;
+    }
+
+    /* Pagination */
+
+    .transfer-table-card .table-pagination {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .pagination-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .pagination-actions .btn {
+        min-height: 40px;
+        border-radius: 9px;
+    }
+}
+
+/* Extra Small Screens */
+
+@media (max-width: 360px) {
+
+    .transfer-history-content {
+        padding: 10px;
+    }
+
+    .transfer-filter-card {
+        padding: 13px;
+    }
+
+    .transfer-filter-grid {
+        column-gap: 8px;
+    }
+
+    .transfer-filter-grid input {
+        font-size: 12px;
+        padding: 8px 6px;
+    }
+
+    .transfer-filter-grid label {
+        font-size: 12px;
+    }
+
+    .heading-actions .btn,
+    .transfer-filter-actions .btn {
+        font-size: 13px;
+    }
+}

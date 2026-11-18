@@ -1,0 +1,313 @@
+
+/* =========================================
+   NEW BOOKING PAGE
+========================================= */
+
+.new-booking-content {
+    min-height: calc(100vh - 78px);
+    padding: 26px;
+    background: var(--background);
+}
+
+/* Page Heading */
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.page-heading h2 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Form Layout */
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Sections */
+
+.form-section {
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-section-heading h3 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.form-section-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Form Grid */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.required {
+    color: var(--danger);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.10);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.75;
+}
+
+.form-group small {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Passenger Section */
+
+.passenger-heading {
+    align-items: center;
+}
+
+#passenger-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.passenger-card {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--background);
+}
+
+.passenger-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.passenger-card-heading h4 {
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.passenger-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(185, 28, 53, 0.10);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Passenger Remove Button */
+
+.remove-passenger-button {
+    padding: 7px 11px;
+    border: 1px solid var(--danger);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--danger);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.remove-passenger-button:hover {
+    background: var(--danger);
+    color: #ffffff;
+}
+
+/* Form Actions */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+}
+
+/* Booking Message */
+
+#new-booking-message {
+    margin-bottom: 18px;
+}
+
+#new-booking-message[hidden] {
+    display: none;
+}
+
+/* Disabled State */
+
+.booking-form button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+    .new-booking-content {
+        padding: 18px 15px;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    .form-grid {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .new-booking-content {
+        padding: 15px 12px;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .page-heading h2 {
+        font-size: 19px;
+    }
+
+    .page-heading > a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form-section {
+        padding: 16px;
+    }
+
+    .form-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .passenger-heading {
+        align-items: stretch;
+    }
+
+    .passenger-heading button {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .passenger-card {
+        padding: 15px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

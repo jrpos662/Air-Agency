@@ -1,0 +1,436 @@
+/* Page-specific styles: customers */
+
+/* =========================================
+   CUSTOMERS PAGE
+========================================= */
+
+.customers-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+}
+
+/* Page Heading */
+
+.customers-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.customers-content .page-heading h2 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.customers-content .page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Customer Statistics */
+
+.customer-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.customer-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    min-width: 0;
+}
+
+.customer-stat-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(185, 28, 53, 0.09);
+    color: var(--primary);
+    font-size: 22px;
+}
+
+.customer-stat-card span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.customer-stat-card strong {
+    display: block;
+    color: var(--text);
+    font-size: 23px;
+    font-weight: 700;
+}
+
+/* Toolbar */
+
+.customer-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.customer-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 350px;
+    min-width: 0;
+}
+
+.customer-search input {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 0 13px;
+    color: var(--text);
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    outline: none;
+    font-size: 13px;
+}
+
+.customer-search input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.08);
+}
+
+.customer-filters {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.customer-filters select {
+    height: 42px;
+    min-width: 140px;
+    padding: 0 12px;
+    color: var(--text);
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    outline: none;
+    font-size: 13px;
+}
+
+.customer-filters select:focus {
+    border-color: var(--primary);
+}
+
+/* Messages */
+
+.customers-message {
+    display: none;
+    padding: 13px 16px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.customers-message.success {
+    display: block;
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+}
+
+.customers-message.error {
+    display: block;
+    color: #991b1b;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+/* Customer Table */
+
+.customer-table-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    min-width: 0;
+}
+
+.customer-table-card .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 19px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.customer-table-card .table-header h3 {
+    margin: 0 0 5px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.customer-table-card .table-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.customer-table-card .table-header > span {
+    color: var(--muted);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.customer-table-card .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.customer-table-card .data-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+}
+
+.customer-table-card .data-table th,
+.customer-table-card .data-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+}
+
+.customer-table-card .data-table th {
+    color: var(--muted);
+    background: var(--background);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.customer-table-card .data-table td {
+    color: var(--text);
+}
+
+.customer-table-card .data-table tbody tr:hover {
+    background: var(--background);
+}
+
+.customer-table-card .data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.customer-table-card .table-empty {
+    padding: 35px 15px !important;
+    text-align: center !important;
+    color: var(--muted) !important;
+}
+
+/* Customer Status */
+
+.customer-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 11px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.customer-status.active {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.customer-status.inactive {
+    color: #991b1b;
+    background: #fee2e2;
+}
+
+/* Customer Actions */
+
+.customer-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 11px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.customer-action:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: rgba(185, 28, 53, 0.04);
+}
+
+/* Pagination */
+
+.customer-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+}
+
+.customer-pagination > span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.customer-pagination > div {
+    display: flex;
+    gap: 8px;
+}
+
+.customer-pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .customers-content {
+        padding: 18px;
+    }
+
+    .customer-stats-grid {
+        gap: 12px;
+    }
+
+    .customer-stat-card {
+        padding: 16px;
+    }
+
+    .customer-toolbar {
+        align-items: stretch;
+    }
+
+    .customer-search {
+        flex-basis: 100%;
+    }
+
+    .customer-filters {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .customers-content {
+        padding: 14px;
+        gap: 16px;
+    }
+
+    .customers-content .page-heading {
+        align-items: flex-start;
+    }
+
+    .customers-content .page-heading h2 {
+        font-size: 19px;
+    }
+
+    .customers-content .page-heading > .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .customer-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .customer-stat-card {
+        padding: 14px;
+    }
+
+    .customer-stat-card strong {
+        font-size: 20px;
+    }
+
+    .customer-toolbar {
+        padding: 12px;
+    }
+
+    .customer-search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .customer-search .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .customer-filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .customer-filters select {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .customer-filters .btn {
+        justify-content: center;
+    }
+
+    .customer-table-card .table-header {
+        padding: 15px;
+    }
+
+    .customer-pagination {
+        padding: 14px;
+        flex-wrap: wrap;
+    }
+
+    .customer-pagination > div {
+        width: 100%;
+    }
+
+    .customer-pagination button {
+        flex: 1;
+        justify-content: center;
+    }
+}

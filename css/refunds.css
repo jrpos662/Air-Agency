@@ -1,0 +1,646 @@
+
+/* =========================================================
+   AIR TICKET AGENCY MANAGEMENT
+   REFUNDS & TICKET CHANGES
+   Responsive Page Stylesheet
+   Shared Dashboard Layout
+========================================================= */
+
+/* =========================================================
+   PAGE CONTENT
+========================================================= */
+
+.refunds-content,
+.refunds-content * {
+    box-sizing: border-box;
+}
+
+.refunds-content {
+    width: 100%;
+    min-width: 0;
+}
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.refunds-content .page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.refunds-content .page-heading h2 {
+    margin: 0 0 7px;
+    color: #202b3c;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.refunds-content .page-heading p {
+    margin: 0;
+    color: #778195;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.refunds-message {
+    display: none;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 13px 16px;
+    border: 1px solid #e2e6ed;
+    border-radius: 9px;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.refunds-message.success,
+.refunds-message.error,
+.refunds-message.warning {
+    display: block;
+}
+
+.refunds-message.success {
+    color: #166534;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.refunds-message.error {
+    color: #991b1b;
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+.refunds-message.warning {
+    color: #92400e;
+    background: #fffbeb;
+    border-color: #fde68a;
+}
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.refund-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin: 0 0 28px;
+}
+
+.refund-summary-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    min-height: 115px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e6e9ef;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.refund-summary-card:hover {
+    box-shadow: 0 5px 16px rgba(15, 23, 42, 0.07);
+}
+
+.refund-summary-card span {
+    display: block;
+    margin-bottom: 12px;
+    color: #778195;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.refund-summary-card strong {
+    display: block;
+    color: #202b3c;
+    font-size: 25px;
+    font-weight: 750;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   COMMON DETAIL CARDS
+========================================================= */
+
+.refunds-content .detail-card {
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 26px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e6e9ef;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.refunds-content .detail-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 19px 21px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.refunds-content .detail-card-header h3 {
+    margin: 0;
+    color: #202b3c;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.refunds-content .detail-card-header > span {
+    color: #778195;
+    font-size: 13px;
+}
+
+.refunds-content .detail-card-body {
+    padding: 22px;
+}
+
+/* Hidden refund form */
+
+.refund-form-card[hidden] {
+    display: none !important;
+}
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.refund-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.refunds-content .form-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 8px;
+}
+
+.refunds-content .form-group label {
+    color: #374151;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.refunds-content .form-group input,
+.refunds-content .form-group select,
+.refunds-content .form-group textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 45px;
+    padding: 11px 13px;
+    color: #202b3c;
+    background: #ffffff;
+    border: 1px solid #dfe4ec;
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.refunds-content .form-group input::placeholder,
+.refunds-content .form-group textarea::placeholder {
+    color: #a0a8b5;
+}
+
+.refunds-content .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.refunds-content .form-group input:focus,
+.refunds-content .form-group select:focus,
+.refunds-content .form-group textarea:focus {
+    border-color: #b91c35;
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.09);
+}
+
+.refunds-content .form-group input:disabled,
+.refunds-content .form-group select:disabled,
+.refunds-content .form-group textarea:disabled {
+    background: #f3f4f6;
+    cursor: not-allowed;
+}
+
+.refund-form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+/* =========================================================
+   FORM ACTION BUTTONS
+========================================================= */
+
+.refund-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #edf0f4;
+}
+
+.refunds-content button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   REFUND FILTERS
+========================================================= */
+
+.refund-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 19px;
+    padding: 21px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.refund-filter-actions {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* =========================================================
+   REFUND TABLE
+========================================================= */
+
+.refunds-content .table-container,
+.refunds-content .table-responsive {
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.refunds-content .data-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.refunds-content .data-table th,
+.refunds-content .data-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #edf0f4;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.refunds-content .data-table th {
+    color: #64748b;
+    background: #f8fafc;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.refunds-content .data-table td {
+    color: #374151;
+}
+
+.refunds-content .data-table tbody tr:hover {
+    background: #fafafa;
+}
+
+.refunds-content .data-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.refunds-content .table-empty {
+    padding: 30px 15px !important;
+    color: #778195 !important;
+    text-align: center;
+}
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.refund-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px 21px;
+    border-top: 1px solid #edf0f4;
+}
+
+.refund-pagination > span {
+    color: #778195;
+    font-size: 13px;
+}
+
+.refund-pagination > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+/* =========================================================
+   TABLET RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .refund-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .refund-summary-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .refund-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Page heading */
+
+    .refunds-content .page-heading {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 22px;
+    }
+
+    .refunds-content .page-heading h2 {
+        font-size: 20px;
+    }
+
+    .refunds-content .page-heading .btn {
+        width: 100%;
+    }
+
+    /* Summary cards */
+
+    .refund-summary-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        margin-bottom: 28px;
+    }
+
+    .refund-summary-card,
+    .refund-summary-card:last-child {
+        grid-column: auto;
+        width: 100%;
+        min-height: 105px;
+        padding: 20px 18px;
+        border-radius: 12px;
+    }
+
+    .refund-summary-card strong {
+        font-size: 22px;
+    }
+
+    /* Main content cards */
+
+    .refunds-content .detail-card {
+        margin-bottom: 25px;
+        border-radius: 12px;
+    }
+
+    .refunds-content .detail-card-header {
+        padding: 18px 16px;
+    }
+
+    .refunds-content .detail-card-body {
+        padding: 18px 16px;
+    }
+
+    /* Form and filter fields */
+
+    .refund-form-grid,
+    .refund-filters {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .refund-filters {
+        padding: 18px 16px;
+    }
+
+    .refund-form-grid .full-width {
+        grid-column: auto;
+    }
+
+    /* Filter buttons */
+
+    .refund-filter-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .refund-filter-actions button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .refund-filter-actions button:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* Form buttons */
+
+    .refund-form-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .refund-form-actions button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Pagination */
+
+    .refund-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 17px 16px;
+    }
+
+    .refund-pagination > div {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .refund-pagination button {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .refund-summary-grid {
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .refund-summary-card,
+    .refund-summary-card:last-child {
+        min-height: 98px;
+        padding: 18px 15px;
+    }
+
+    .refunds-content .detail-card {
+        margin-bottom: 22px;
+    }
+
+    .refunds-content .detail-card-header {
+        padding: 16px 13px;
+    }
+
+    .refunds-content .detail-card-body {
+        padding: 16px 13px;
+    }
+
+    .refund-filters {
+        padding: 16px 13px;
+    }
+
+    .refund-form-actions,
+    .refund-filter-actions {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .refund-filter-actions button:last-child {
+        grid-column: auto;
+    }
+}
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+
+    .sidebar,
+    .topbar,
+    .refunds-content .page-heading button,
+    .refund-form-card,
+    .refund-filters,
+    .refund-pagination,
+    .dashboard-footer {
+        display: none !important;
+    }
+
+    .app-layout,
+    .main-content,
+    .dashboard-content,
+    .refunds-content {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .refunds-content .detail-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+    }
+
+    .refunds-content .data-table {
+        min-width: 0;
+    }
+
+    .refunds-content .data-table th,
+    .refunds-content .data-table td {
+        padding: 8px;
+        font-size: 10px;
+    }
+}
+
+
+
+/* MOBILE SUMMARY CARDS - SIDE BY SIDE */
+
+@media (max-width: 600px) {
+    .refund-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .refund-summary-card,
+    .refund-summary-card:last-child {
+        grid-column: auto;
+        min-width: 0;
+        min-height: 100px;
+        padding: 15px 12px;
+    }
+
+    .refund-summary-card span {
+        font-size: 12px;
+        margin-bottom: 9px;
+    }
+
+    .refund-summary-card strong {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 380px) {
+    .refund-summary-grid {
+        gap: 10px;
+    }
+
+    .refund-summary-card,
+    .refund-summary-card:last-child {
+        padding: 13px 10px;
+    }
+
+    .refund-summary-card strong {
+        font-size: 17px;
+    }
+}

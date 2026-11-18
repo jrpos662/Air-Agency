@@ -1,0 +1,422 @@
+/* Page-specific styles: settings */
+
+/* =========================================
+   SETTINGS PAGE
+========================================= */
+
+.settings-content {
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.settings-page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.settings-page-heading h2 {
+    margin: 0 0 7px;
+    font-size: 22px;
+    color: var(--text);
+}
+
+.settings-page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* =========================================
+   SETTINGS LAYOUT
+========================================= */
+
+.settings-layout {
+    display: grid;
+    grid-template-columns: 245px minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+/* =========================================
+   SETTINGS NAVIGATION
+========================================= */
+
+.settings-navigation {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: var(--shadow-sm);
+}
+
+.settings-nav-item {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.settings-nav-item:hover {
+    background: var(--background);
+    color: var(--primary);
+}
+
+.settings-nav-item.active {
+    background: rgba(185, 28, 53, 0.10);
+    color: var(--primary);
+}
+
+/* =========================================
+   SETTINGS PANELS
+========================================= */
+
+.settings-panels {
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.settings-panel {
+    padding: 25px;
+}
+
+.settings-panel[hidden] {
+    display: none !important;
+}
+
+.settings-panel-header {
+    padding-bottom: 20px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.settings-panel-header h3 {
+    margin: 0 0 7px;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.settings-panel-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.settings-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.settings-form-grid .form-group {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+.settings-form-grid label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.settings-form-grid input,
+.settings-form-grid select,
+.settings-form-grid textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.settings-form-grid textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.settings-form-grid input:focus,
+.settings-form-grid select:focus,
+.settings-form-grid textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.10);
+}
+
+.settings-form-grid input::placeholder,
+.settings-form-grid textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.8;
+}
+
+/* =========================================
+   FORM ACTIONS
+========================================= */
+
+.settings-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.settings-form-actions .btn {
+    min-height: 43px;
+    padding: 11px 19px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =========================================
+   SETTINGS NOTE
+========================================= */
+
+.settings-note {
+    margin-top: 22px;
+    padding: 14px 16px;
+    border: 1px solid rgba(185, 28, 53, 0.18);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-md);
+    background: rgba(185, 28, 53, 0.05);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   SYSTEM OPTIONS
+========================================= */
+
+.settings-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.settings-option:first-child {
+    padding-top: 0;
+}
+
+.settings-option > div {
+    min-width: 0;
+}
+
+.settings-option strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.settings-option p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   TOGGLE SWITCH
+========================================= */
+
+.settings-switch {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 46px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.settings-switch input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.switch-slider {
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    background: #cbd0d8;
+    transition: background 0.2s ease;
+}
+
+.switch-slider::before {
+    content: "";
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    left: 3px;
+    top: 3px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease;
+}
+
+.settings-switch input:checked + .switch-slider {
+    background: var(--primary);
+}
+
+.settings-switch input:checked + .switch-slider::before {
+    transform: translateX(21px);
+}
+
+.settings-switch input:focus-visible + .switch-slider {
+    outline: 3px solid rgba(185, 28, 53, 0.22);
+    outline-offset: 2px;
+}
+
+/* =========================================
+   ALERT
+========================================= */
+
+.settings-content .alert {
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+    .settings-layout {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .settings-navigation {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .settings-nav-item {
+        text-align: center;
+        padding: 11px 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .settings-content {
+        padding: 15px;
+    }
+
+    .settings-page-heading {
+        margin-bottom: 18px;
+    }
+
+    .settings-page-heading h2 {
+        font-size: 19px;
+    }
+
+    .settings-navigation {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .settings-nav-item {
+        min-height: 43px;
+        font-size: 12px;
+        padding: 9px 5px;
+    }
+
+    .settings-panel {
+        padding: 17px 14px;
+    }
+
+    .settings-panel-header {
+        margin-bottom: 18px;
+        padding-bottom: 16px;
+    }
+
+    .settings-panel-header h3 {
+        font-size: 16px;
+    }
+
+    .settings-form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .settings-form-grid .full-width {
+        grid-column: auto;
+    }
+
+    .settings-form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .settings-form-actions .btn {
+        width: 100%;
+    }
+
+    .settings-option {
+        gap: 12px;
+        padding: 16px 0;
+    }
+
+    .settings-option strong {
+        font-size: 13px;
+    }
+
+    .settings-option p {
+        font-size: 11px;
+    }
+
+    .settings-note {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .settings-navigation {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-nav-item {
+        text-align: left;
+        padding-left: 14px;
+    }
+}

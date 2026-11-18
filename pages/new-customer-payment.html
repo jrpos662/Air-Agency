@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>New Customer Payment | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/new-customer-payment.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">AT</div>
+            <div>
+                <h2>Air Ticket Agency</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-heading">Main Menu</div>
+
+            <a href="dashboard.html" class="nav-link">
+                Dashboard
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                Bookings
+            </a>
+
+            <a href="ticket-sales.html" class="nav-link">
+                Ticket Sales
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                Customers
+            </a>
+
+            <a href="customer-payments.html" class="nav-link active">
+                Customer Payments
+            </a>
+
+            <a href="agencies.html" class="nav-link">
+                Agencies
+            </a>
+
+            <a href="expenses.html" class="nav-link">
+                Expenses
+            </a>
+
+            <a href="cash-bank.html" class="nav-link">
+                Cash & Bank
+            </a>
+
+            <div class="nav-heading">Management</div>
+
+            <a href="reports.html" class="nav-link">
+                Reports
+            </a>
+
+            <a href="staff.html" class="nav-link">
+                Staff
+            </a>
+
+            <a href="settings.html" class="nav-link">
+                Settings
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Air Ticket Agency Management</span>
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="sidebar-toggle"
+                    aria-label="Toggle menu">
+                    ☰
+                </button>
+
+                <div>
+                    <h1>New Customer Payment</h1>
+                    <p>Record and allocate a customer payment</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+
+                    <div>
+                        <strong id="user-name">User</strong>
+                        <span id="user-role">Staff</span>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-outline logout-button"
+                    id="logout-button">
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Page Content -->
+        <section class="new-customer-payment-content">
+
+            <div class="page-heading">
+                <div>
+                    <h2>Record Customer Payment</h2>
+                    <p>Enter payment details and allocate the amount to outstanding sales.</p>
+                </div>
+
+                <a href="customer-payments.html" class="btn btn-outline">
+                    Back to Payments
+                </a>
+            </div>
+
+            <div
+                id="new-payment-message"
+                class="new-payment-message"
+                role="alert"
+                aria-live="polite">
+            </div>
+
+            <form id="new-customer-payment-form">
+
+                <!-- Customer Information -->
+                <div class="payment-form-card">
+
+                    <div class="form-card-header">
+                        <h3>Customer Information</h3>
+                        <p>Select the customer who made the payment.</p>
+                    </div>
+
+                    <div class="form-card-body">
+
+                        <div class="form-grid">
+
+                            <div class="form-group full-width">
+                                <label for="customer-id">
+                                    Customer <span class="required">*</span>
+                                </label>
+
+                                <select id="customer-id" name="customer_id" required>
+                                    <option value="">Loading customers...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customer-phone">Phone Number</label>
+                                <input
+                                    type="tel"
+                                    id="customer-phone"
+                                    readonly
+                                    placeholder="Customer phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customer-email">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="customer-email"
+                                    readonly
+                                    placeholder="Customer email">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Payment Information -->
+                <div class="payment-form-card">
+
+                    <div class="form-card-header">
+                        <h3>Payment Information</h3>
+                        <p>Enter the amount and receiving account.</p>
+                    </div>
+
+                    <div class="form-card-body">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="payment-date">
+                                    Payment Date <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="payment-date"
+                                    name="payment_date"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="payment-amount">
+                                    Payment Amount (৳) <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="payment-amount"
+                                    name="amount"
+                                    min="0.01"
+                                    step="0.01"
+                                    placeholder="0.00"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="payment-method">
+                                    Payment Method <span class="required">*</span>
+                                </label>
+
+                                <select id="payment-method" name="payment_method" required>
+                                    <option value="">Select Method</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="bank">Bank</option>
+                                    <option value="mobile_banking">Mobile Banking</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cash-account-id">
+                                    Receiving Account <span class="required">*</span>
+                                </label>
+
+                                <select
+                                    id="cash-account-id"
+                                    name="account_id"
+                                    required>
+                                    <option value="">Select Receiving Account</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="payment-reference">
+                                    Transaction Reference
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="payment-reference"
+                                    name="payment_reference"
+                                    maxlength="120"
+                                    placeholder="Bank transaction ID or mobile banking reference">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Payment Allocation -->
+                <div class="payment-form-card">
+
+                    <div class="form-card-header allocation-header">
+                        <div>
+                            <h3>Payment Allocation</h3>
+                            <p>Allocate this payment to one or more outstanding ticket sales.</p>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-outline btn-sm"
+                            id="add-allocation-button">
+                            + Add Sale
+                        </button>
+                    </div>
+
+                    <div class="form-card-body">
+
+                        <div id="allocation-list">
+
+                            <div class="allocation-row" data-allocation>
+
+                                <div class="form-group allocation-sale">
+                                    <label>Ticket Sale</label>
+
+                                    <select
+                                        name="sale_id"
+                                        class="allocation-sale-select"
+                                        required>
+                                        <option value="">Select Ticket Sale</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group allocation-amount">
+                                    <label>Allocated Amount (৳)</label>
+
+                                    <input
+                                        type="number"
+                                        name="allocated_amount"
+                                        class="allocation-amount-input"
+                                        min="0.01"
+                                        step="0.01"
+                                        placeholder="0.00"
+                                        required>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-danger btn-sm remove-allocation-button"
+                                    disabled
+                                    aria-label="Remove allocation">
+                                    Remove
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="allocation-summary">
+
+                            <div>
+                                <span>Total Payment</span>
+                                <strong id="allocation-total-payment">৳0.00</strong>
+                            </div>
+
+                            <div>
+                                <span>Total Allocated</span>
+                                <strong id="allocation-total-allocated">৳0.00</strong>
+                            </div>
+
+                            <div>
+                                <span>Unallocated Amount</span>
+                                <strong id="allocation-unallocated">৳0.00</strong>
+                            </div>
+
+                        </div>
+
+                        <p class="allocation-help">
+                            The total allocated amount cannot exceed the payment amount.
+                            Any remaining amount will stay as an unallocated customer advance.
+                        </p>
+
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="payment-form-card">
+
+                    <div class="form-card-header">
+                        <h3>Additional Information</h3>
+                    </div>
+
+                    <div class="form-card-body">
+
+                        <div class="form-group">
+                            <label for="payment-notes">Notes</label>
+
+                            <textarea
+                                id="payment-notes"
+                                name="notes"
+                                rows="4"
+                                maxlength="1000"
+                                placeholder="Enter payment notes..."></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="payment-form-actions">
+
+                    <a
+                        href="customer-payments.html"
+                        class="btn btn-outline">
+                        Cancel
+                    </a>
+
+                    <button
+                        type="reset"
+                        class="btn btn-outline"
+                        id="reset-payment-form">
+                        Reset
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="save-customer-payment-button">
+                        Save Payment
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>© 2026 Air Ticket Agency Management. All rights reserved.</p>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/new-customer-payment.js"></script>
+
+</body>
+</html>

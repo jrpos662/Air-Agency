@@ -1,0 +1,816 @@
+
+/* ========================================
+   Cash & Bank Page
+======================================== */
+
+/* Main Content */
+
+.cash-bank-content {
+    min-width: 0;
+    max-width: 100%;
+    padding: 24px;
+    overflow-x: hidden;
+}
+
+/* Page Heading */
+
+.cash-bank-content .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.page-heading-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Messages */
+
+.cash-bank-message {
+    display: none;
+    padding: 13px 16px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.cash-bank-message.show {
+    display: block;
+}
+
+.cash-bank-message.success {
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+}
+
+.cash-bank-message.error {
+    color: #991b1b;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+.cash-bank-message.info {
+    color: #1e40af;
+    background: #dbeafe;
+    border: 1px solid #bfdbfe;
+}
+
+/* Summary Cards */
+
+.cash-bank-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.cash-bank-stats .stat-card {
+    min-width: 0;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.cash-bank-stats .stat-card h3 {
+    margin: 0 0 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.cash-bank-stats .stat-card .stat-value {
+    margin: 0;
+    color: var(--text);
+    font-size: 25px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.cash-bank-stats .stat-card .stat-description {
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* Sections */
+
+.cash-bank-section {
+    min-width: 0;
+    max-width: 100%;
+    margin-bottom: 24px;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.cash-bank-section .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.cash-bank-section .section-heading h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* Account Type Filter */
+
+.account-type-filter {
+    min-width: 160px;
+    max-width: 220px;
+}
+
+/* Account Cards */
+
+.account-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.account-card {
+    min-width: 0;
+    padding: 19px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.account-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.account-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.account-card-header h3 {
+    margin: 0 0 5px;
+    color: var(--text);
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.account-card-header p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.account-type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.account-card-balance {
+    margin-bottom: 15px;
+}
+
+.account-card-balance span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.account-card-balance strong {
+    display: block;
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.account-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* Empty Account State */
+
+.account-empty-state {
+    grid-column: 1 / -1;
+    padding: 35px 20px;
+    text-align: center;
+    color: var(--text-muted);
+    background: var(--background);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+}
+
+/* Transaction Filters */
+
+.transaction-filters {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.transaction-filters > *,
+.transaction-filters .form-group {
+    min-width: 0;
+    width: 100%;
+}
+
+.transaction-filters input,
+.transaction-filters select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font: inherit;
+    font-size: 14px;
+}
+
+.transaction-filters input:focus,
+.transaction-filters select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.10);
+}
+
+#transaction-search,
+#transaction-date-from,
+#transaction-date-to {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Filter Actions */
+
+.transaction-filter-actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    width: 100%;
+}
+
+.transaction-filter-actions .btn {
+    flex: 1;
+    min-height: 46px;
+}
+
+/* Transaction Table */
+
+.cash-bank-table-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.cash-bank-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.cash-bank-table th,
+.cash-bank-table td {
+    padding: 13px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.cash-bank-table th {
+    background: var(--background);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.cash-bank-table td {
+    color: var(--text);
+}
+
+.cash-bank-table tbody tr:hover {
+    background: var(--background);
+}
+
+.transaction-credit {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.transaction-debit {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.transaction-transfer {
+    color: var(--info);
+    font-weight: 600;
+}
+
+/* Table Footer & Pagination */
+
+.cash-bank-table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 17px;
+}
+
+.cash-bank-table-footer p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.cash-bank-pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cash-bank-pagination button {
+    min-width: 36px;
+    min-height: 36px;
+}
+
+.cash-bank-pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Account Modal */
+
+#account-modal.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+#account-modal.modal-overlay.show {
+    display: flex;
+}
+
+#account-modal .modal-content {
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+#account-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+#account-modal .modal-header h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: 19px;
+}
+
+#account-modal .modal-body {
+    padding: 22px;
+}
+
+#account-modal .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 22px;
+    border-top: 1px solid var(--border);
+}
+
+/* Account Form */
+
+.account-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.account-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.account-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.account-form-group label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.account-form-group input,
+.account-form-group select,
+.account-form-group textarea {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font: inherit;
+    font-size: 14px;
+}
+
+.account-form-group textarea {
+    min-height: 85px;
+    resize: vertical;
+}
+
+.account-form-group input:focus,
+.account-form-group select:focus,
+.account-form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(185, 28, 53, 0.1);
+}
+
+/* Opening Balance Notice */
+
+.opening-balance-notice {
+    padding: 12px 14px;
+    color: #854d0e;
+    background: #fef9c3;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ========================================
+   Responsive Layout
+======================================== */
+
+@media (max-width: 1100px) {
+    .cash-bank-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .account-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .transaction-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .cash-bank-content {
+        padding: 16px;
+    }
+
+    .cash-bank-content .page-heading {
+        align-items: flex-start;
+    }
+
+    .page-heading-actions {
+        width: 100%;
+    }
+
+    .page-heading-actions .btn {
+        flex: 1;
+    }
+
+    .cash-bank-stats {
+        gap: 12px;
+    }
+
+    .cash-bank-stats .stat-card {
+        padding: 15px;
+    }
+
+    .cash-bank-stats .stat-card .stat-value {
+        font-size: 20px;
+    }
+
+    .account-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .cash-bank-section {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .cash-bank-section .section-heading {
+        align-items: flex-start;
+    }
+
+    .transaction-filters {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .transaction-filters > *,
+    .transaction-filters .form-group {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .transaction-filters input,
+    .transaction-filters select {
+        min-height: 48px;
+        font-size: 14px;
+    }
+
+    .transaction-filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .transaction-filter-actions .btn {
+        width: 100%;
+        min-height: 48px;
+    }
+
+    .cash-bank-table {
+        min-width: 850px;
+    }
+
+    .cash-bank-table-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .cash-bank-pagination {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .cash-bank-pagination button {
+        min-height: 42px;
+    }
+
+    .account-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .account-form-group.full-width {
+        grid-column: auto;
+    }
+
+    #account-modal .modal-content {
+        max-height: 95vh;
+    }
+}
+
+@media (max-width: 420px) {
+    .cash-bank-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .page-heading-actions {
+        flex-direction: column;
+    }
+
+    .page-heading-actions .btn {
+        width: 100%;
+    }
+
+    #account-modal.modal-overlay {
+        padding: 10px;
+    }
+
+    #account-modal .modal-header,
+    #account-modal .modal-body {
+        padding: 16px;
+    }
+
+    #account-modal .modal-footer {
+        padding: 14px 16px;
+    }
+}
+
+/* ========================================
+   Cash & Bank - Account Overview Layout
+======================================== */
+
+/* Summary Cards - Two Columns on Mobile */
+
+.cash-bank-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.cash-bank-stats .stat-card {
+    min-width: 0;
+    padding: 17px;
+}
+
+/* Account Overview Section */
+
+.cash-bank-section {
+    width: 100%;
+    min-width: 0;
+}
+
+.cash-bank-section .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.cash-bank-section .section-heading p {
+    margin: 8px 0 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Account Type Dropdown */
+
+#account-type-filter {
+    width: auto;
+    min-width: 160px;
+    max-width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+}
+
+/* Account Cards - Side by Side */
+
+.account-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    margin-top: 18px;
+}
+
+.account-card {
+    min-width: 0;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.account-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.account-card-header h3 {
+    font-size: 14px;
+}
+
+.account-card-balance strong {
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.account-card-footer {
+    flex-wrap: wrap;
+    font-size: 11px;
+}
+
+/* Empty State */
+
+.account-empty-state {
+    grid-column: 1 / -1;
+    padding: 25px 12px;
+    text-align: center;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 600px) {
+
+    .cash-bank-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .cash-bank-stats .stat-card {
+        padding: 15px 12px;
+    }
+
+    .cash-bank-stats .stat-card .stat-value {
+        font-size: 19px;
+    }
+
+    .account-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .account-card {
+        padding: 13px;
+    }
+
+    .cash-bank-section .section-heading {
+        flex-direction: column;
+    }
+
+    #account-type-filter {
+        width: 100%;
+    }
+}
+
+/* Very Small Screens */
+
+@media (max-width: 350px) {
+
+    .cash-bank-stats,
+    .account-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .cash-bank-stats .stat-card {
+        padding: 12px 9px;
+    }
+
+    .cash-bank-stats .stat-card .stat-value {
+        font-size: 16px;
+    }
+
+    .account-card {
+        padding: 10px;
+    }
+
+    .account-card-balance strong {
+        font-size: 16px;
+    }
+}

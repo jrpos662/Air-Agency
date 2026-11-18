@@ -1,0 +1,475 @@
+
+/* =========================================
+   CUSTOMER PAYMENT DETAILS
+========================================= */
+
+.payment-details-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Page Heading */
+
+.payment-details-content .page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.payment-details-content .page-heading h2 {
+    margin: 0 0 7px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.payment-details-content .page-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Payment Overview */
+
+.payment-overview-card {
+    padding: 24px;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.payment-overview-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.overview-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.payment-overview-header h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: 21px;
+    overflow-wrap: anywhere;
+}
+
+.payment-overview-header > .badge {
+    flex-shrink: 0;
+}
+
+.payment-overview-amount {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px 0;
+}
+
+.payment-overview-amount span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.payment-overview-amount strong {
+    color: var(--success);
+    font-size: 32px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.payment-overview-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+
+.payment-overview-meta > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.payment-overview-meta span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.payment-overview-meta strong {
+    color: var(--text);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* Detail Cards */
+
+.payment-details-card {
+    margin-bottom: 20px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.details-card-header {
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.details-card-header h3 {
+    margin: 0;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.details-card-header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.details-card-body {
+    padding: 22px;
+}
+
+/* Details Grid */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.detail-item > span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.detail-item > strong {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.detail-item > p {
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.recorded-information {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+/* Allocation Table */
+
+.allocation-details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.payment-details-card .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.payment-details-card .data-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+}
+
+.payment-details-card .data-table th,
+.payment-details-card .data-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.payment-details-card .data-table th {
+    background: var(--background);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.payment-details-card .data-table td {
+    color: var(--text);
+}
+
+.payment-details-card .data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.payment-details-card .data-table tbody tr:hover {
+    background: rgba(185, 28, 53, 0.025);
+}
+
+.payment-details-card .empty-state {
+    padding: 30px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* Allocation Total */
+
+.allocation-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 22px;
+    background: var(--background);
+    border-top: 1px solid var(--border);
+}
+
+.allocation-total-row span {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.allocation-total-row strong {
+    color: var(--text);
+    font-size: 18px;
+}
+
+/* Payment Summary */
+
+.payment-summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.payment-summary-details > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.payment-summary-details > div:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.payment-summary-details span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.payment-summary-details strong {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.payment-summary-details .unallocated-summary strong {
+    color: var(--primary);
+}
+
+/* Messages */
+
+.payment-details-message {
+    display: none;
+    margin-bottom: 18px;
+    padding: 13px 16px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.payment-details-message.show {
+    display: block;
+}
+
+.payment-details-message.error {
+    color: var(--danger);
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.22);
+}
+
+.payment-details-message.success {
+    color: var(--success);
+    background: rgba(22, 163, 74, 0.09);
+    border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+/* Actions */
+
+.payment-details-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 22px 0 28px;
+}
+
+.payment-details-actions .btn {
+    min-width: 140px;
+    min-height: 42px;
+}
+
+/* Print */
+
+@media print {
+    body {
+        background: #fff !important;
+    }
+
+    .sidebar,
+    .topbar,
+    .page-heading,
+    .payment-details-actions,
+    .dashboard-footer,
+    #sidebar-toggle {
+        display: none !important;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .payment-details-content {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .payment-overview-card,
+    .payment-details-card {
+        box-shadow: none;
+        break-inside: avoid;
+        border: 1px solid #ddd;
+    }
+
+    .payment-details-card .data-table {
+        min-width: 100%;
+    }
+
+    .payment-details-card .data-table th,
+    .payment-details-card .data-table td {
+        white-space: normal;
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .payment-details-content {
+        padding: 20px;
+    }
+
+    .payment-overview-meta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+    .payment-details-content {
+        padding: 13px;
+    }
+
+    .payment-details-content .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .payment-details-content .page-heading > a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .payment-details-content .page-heading h2 {
+        font-size: 20px;
+    }
+
+    .payment-overview-card {
+        padding: 17px;
+    }
+
+    .payment-overview-header h2 {
+        font-size: 17px;
+    }
+
+    .payment-overview-amount strong {
+        font-size: 27px;
+    }
+
+    .payment-overview-meta {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .details-card-header {
+        padding: 16px;
+    }
+
+    .details-card-body {
+        padding: 17px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .allocation-total-row {
+        padding: 16px;
+    }
+
+    .payment-summary-details > div {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .payment-details-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .payment-details-actions .btn {
+        width: 100%;
+    }
+}

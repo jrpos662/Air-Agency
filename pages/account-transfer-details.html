@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>Transfer Details | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/account-transfer-details.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">AT</div>
+            <div>
+                <h2>Air Agency</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-heading">MAIN MENU</div>
+
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="bookings.html" class="nav-link">Bookings</a>
+            <a href="ticket-sales.html" class="nav-link">Ticket Sales</a>
+            <a href="customers.html" class="nav-link">Customers</a>
+
+            <div class="nav-heading">FINANCE</div>
+
+            <a href="customer-payments.html" class="nav-link">
+                Customer Payments
+            </a>
+
+            <a href="agency-accounts.html" class="nav-link">
+                Agency Accounts
+            </a>
+
+            <a href="expenses.html" class="nav-link">
+                Expenses
+            </a>
+
+            <a href="cash-bank.html" class="nav-link active">
+                Cash & Bank
+            </a>
+
+            <a href="account-transfer.html" class="nav-link">
+                Account Transfer
+            </a>
+
+            <a href="account-transfer-history.html" class="nav-link">
+                Transfer History
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                Reports
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Air Ticket Agency Management</span>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="sidebar-toggle"
+                    aria-label="Toggle navigation"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Transfer Details</h1>
+                    <p>View account transfer information.</p>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+
+                    <div>
+                        <strong id="user-name">Loading...</strong>
+                        <span id="user-role">Staff</span>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-outline logout-button"
+                    id="logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+        <section class="transfer-details-content">
+
+            <!-- Page Heading -->
+
+            <div class="page-heading">
+
+                <div>
+                    <h2>Account Transfer Details</h2>
+                    <p>Complete information about this transaction.</p>
+                </div>
+
+                <div class="heading-actions">
+
+                    <a
+                        href="account-transfer-history.html"
+                        class="btn btn-outline"
+                    >
+                        Back to History
+                    </a>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="refresh-transfer-details"
+                    >
+                        Refresh
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="print-transfer-details"
+                    >
+                        Print
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div
+                id="transfer-details-message"
+                class="transfer-details-message"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+            <!-- Transfer Overview -->
+
+            <div class="transfer-overview-card">
+
+                <div class="transfer-overview-header">
+
+                    <div>
+                        <span class="overview-label">TRANSFER REFERENCE</span>
+
+                        <h3 id="detail-transfer-reference">
+                            Loading...
+                        </h3>
+                    </div>
+
+                    <span class="transfer-status-badge">
+                        Completed
+                    </span>
+
+                </div>
+
+                <div class="transfer-overview-amount">
+
+                    <span>Transfer Amount</span>
+
+                    <strong id="detail-transfer-amount">
+                        ৳0.00
+                    </strong>
+
+                </div>
+
+                <div class="transfer-overview-footer">
+
+                    <div>
+                        <span>Transfer ID</span>
+                        <strong id="detail-transfer-id">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Transfer Date</span>
+                        <strong id="detail-transfer-date">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Created At</span>
+                        <strong id="detail-created-at">—</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Account Information -->
+
+            <div class="transfer-account-grid">
+
+                <div class="transfer-account-card source-account">
+
+                    <div class="account-card-heading">
+                        <span class="account-icon">↗</span>
+                        <span>FROM ACCOUNT</span>
+                    </div>
+
+                    <h3 id="detail-from-account">
+                        Loading...
+                    </h3>
+
+                    <div class="account-detail-row">
+                        <span>Account Type</span>
+                        <strong id="detail-from-type">—</strong>
+                    </div>
+
+                    <div class="account-detail-row">
+                        <span>Account Number</span>
+                        <strong id="detail-from-number">—</strong>
+                    </div>
+
+                </div>
+
+                <div class="transfer-direction">
+                    <span>→</span>
+                    <small>TRANSFERRED TO</small>
+                </div>
+
+                <div class="transfer-account-card destination-account">
+
+                    <div class="account-card-heading">
+                        <span class="account-icon">↙</span>
+                        <span>TO ACCOUNT</span>
+                    </div>
+
+                    <h3 id="detail-to-account">
+                        Loading...
+                    </h3>
+
+                    <div class="account-detail-row">
+                        <span>Account Type</span>
+                        <strong id="detail-to-type">—</strong>
+                    </div>
+
+                    <div class="account-detail-row">
+                        <span>Account Number</span>
+                        <strong id="detail-to-number">—</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Additional Information -->
+
+            <div class="card transfer-extra-card">
+
+                <div class="details-card-heading">
+                    <h3>Additional Information</h3>
+                </div>
+
+                <div class="transfer-extra-grid">
+
+                    <div class="detail-item">
+                        <span>Reference Number</span>
+                        <strong id="detail-reference-number">—</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Recorded By</span>
+                        <strong id="detail-recorded-by">—</strong>
+                    </div>
+
+                    <div class="detail-item full-width">
+                        <span>Transfer Notes</span>
+                        <p id="detail-transfer-notes">No notes available.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Security Notice -->
+
+            <div class="transfer-security-notice">
+                <span>ⓘ</span>
+                <p>
+                    This is a financial ledger transaction.
+                    Original transfer records should not be
+                    directly edited or deleted.
+                </p>
+            </div>
+
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>
+                © 2026 Air Ticket Agency Management.
+                All rights reserved.
+            </p>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/account-transfer-details.js"></script>
+
+</body>
+</html>

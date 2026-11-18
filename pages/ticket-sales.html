@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>Ticket Sales | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/ticket-sales.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">AT</div>
+            <div>
+                <h2>Air Ticket Agency</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-heading">MAIN MENU</div>
+
+            <a href="dashboard.html" class="nav-link">
+                Dashboard
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                Bookings
+            </a>
+
+            <a href="ticket-sales.html" class="nav-link active">
+                Ticket Sales
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                Customers
+            </a>
+
+            <div class="nav-heading">FINANCIAL MANAGEMENT</div>
+
+            <a href="customer-payments.html" class="nav-link">
+                Customer Payments
+            </a>
+
+            <a href="agencies.html" class="nav-link">
+                Source Agencies
+            </a>
+
+            <a href="agency-accounts.html" class="nav-link">
+                Agency Accounts
+            </a>
+
+            <a href="expenses.html" class="nav-link">
+                Expenses
+            </a>
+
+            <a href="cash-bank.html" class="nav-link">
+                Cash & Bank
+            </a>
+
+            <a href="refunds.html" class="nav-link">
+                Refunds & Changes
+            </a>
+
+            <div class="nav-heading">SYSTEM</div>
+
+            <a href="reports.html" class="nav-link">
+                Reports
+            </a>
+
+            <a href="receipts.html" class="nav-link">
+                Receipts
+            </a>
+
+            <a href="staff.html" class="nav-link">
+                Staff Management
+            </a>
+
+            <a href="settings.html" class="nav-link">
+                Settings
+            </a>
+
+            <a href="audit-logs.html" class="nav-link">
+                Audit Logs
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Air Ticket Agency Management</span>
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="sidebar-toggle"
+                    aria-label="Toggle navigation"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Ticket Sales</h1>
+                    <p>Manage issued tickets and sales records</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+
+                    <div>
+                        <strong id="user-name">Loading...</strong>
+                        <span id="user-role">User</span>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-outline logout-button"
+                    id="logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Ticket Sales Content -->
+        <section class="ticket-sales-content">
+
+            <div class="page-heading">
+                <div>
+                    <h2>Ticket Sales</h2>
+                    <p>View and manage all ticket sales</p>
+                </div>
+
+                <a
+                    href="new-ticket-sale.html"
+                    class="btn btn-primary"
+                    id="new-sale-button"
+                >
+                    + New Ticket Sale
+                </a>
+            </div>
+
+            <!-- Statistics -->
+            <div class="sale-stats-grid">
+
+                <div class="sale-stat-card">
+                    <span>Total Sales</span>
+                    <strong id="total-sales">0</strong>
+                    <small>All recorded sales</small>
+                </div>
+
+                <div class="sale-stat-card">
+                    <span>Today's Sales</span>
+                    <strong id="today-sales">0</strong>
+                    <small>Sales recorded today</small>
+                </div>
+
+                <div class="sale-stat-card">
+                    <span>Ticket Count</span>
+                    <strong id="total-tickets">0</strong>
+                    <small>Passengers / tickets</small>
+                </div>
+
+                <div class="sale-stat-card">
+                    <span>Sales Amount</span>
+                    <strong id="total-sales-amount">৳0.00</strong>
+                    <small>Recorded selling amount</small>
+                </div>
+
+            </div>
+
+            <!-- Filters -->
+            <div class="sale-toolbar">
+
+                <div class="sale-search">
+                    <input
+                        type="search"
+                        id="sale-search"
+                        placeholder="Search sale reference or PNR..."
+                        autocomplete="off"
+                    >
+                </div>
+
+
+<div class="sale-filters">
+
+    <select id="sale-status-filter">
+        <option value="">All Statuses</option>
+        <option value="completed">Fully Paid</option>
+        <option value="partially_paid">Partially Paid</option>
+        <option value="unpaid">Unpaid</option>
+        <option value="partially_refunded">Partially Refunded</option>
+        <option value="refunded">Refunded</option>
+        <option value="cancelled">Cancelled</option>
+    </select>
+
+  
+<div class="sale-date-field">
+    <label for="sale-date-from">From Date</label>
+    <input type="date" id="sale-date-from">
+</div>
+
+<div class="sale-date-field">
+    <label for="sale-date-to">To Date</label>
+    <input type="date" id="sale-date-to">
+</div>
+
+
+    <button type="button" id="sale-search-button">Search</button>
+    <button type="button" id="sale-reset-button">Reset</button>
+    <button type="button" id="sale-refresh-button">Refresh</button>
+
+</div>
+
+            </div>
+
+            <!-- Message -->
+            <div
+                id="sale-message"
+                class="sale-message"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+            <!-- Sales Table -->
+            <div class="sale-table-card">
+
+                <div class="table-header">
+                    <div>
+                        <h3>Sales Records</h3>
+                        <span id="sale-count">0 records</span>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="data-table">
+
+                        <thead>
+                            <tr>
+                                <th>Sale Reference</th>
+                                <th>Sale Date</th>
+                                <th>Customer</th>
+                                <th>PNR</th>
+                                <th>Passengers</th>
+                                <th>Selling Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="sales-table-body">
+                            <tr>
+                                <td colspan="8" class="table-empty">
+                                    Loading sales records...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="sale-pagination">
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="sale-previous-page"
+                        disabled
+                    >
+                        Previous
+                    </button>
+
+                    <span id="sale-page-info">Page 1</span>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="sale-next-page"
+                        disabled
+                    >
+                        Next
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>
+                © 2026 Air Ticket Agency Management.
+                All rights reserved.
+            </p>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/ticket-sales.js"></script>
+
+</body>
+</html>
