@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>Bookings | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/bookings.css">
+</head>
+
+<body class="bookings-page">
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-logo">AT</div>
+                <div>
+                    <h2>Air Agency</h2>
+                    <span>Management System</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <span class="nav-heading">MAIN MENU</span>
+
+                <a href="dashboard.html" class="nav-link">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="bookings.html" class="nav-link active">
+                    <span>▤</span> Bookings
+                </a>
+
+                <a href="ticket-sales.html" class="nav-link">
+                    <span>✈</span> Ticket Sales
+                </a>
+
+                <a href="customers.html" class="nav-link">
+                    <span>♙</span> Customers
+                </a>
+
+                <span class="nav-heading">ACCOUNTS</span>
+
+                <a href="customer-payments.html" class="nav-link">
+                    <span>৳</span> Customer Payments
+                </a>
+
+                <a href="agencies.html" class="nav-link">
+                    <span>▣</span> Agencies
+                </a>
+
+                <a href="agency-accounts.html" class="nav-link">
+                    <span>▤</span> Agency Accounts
+                </a>
+
+                <a href="expenses.html" class="nav-link">
+                    <span>↘</span> Expenses
+                </a>
+
+                <a href="cash-bank.html" class="nav-link">
+                    <span>▥</span> Cash & Bank
+                </a>
+
+                <span class="nav-heading">MANAGEMENT</span>
+
+                <a href="refunds.html" class="nav-link">
+                    <span>↩</span> Refunds & Changes
+                </a>
+
+                <a href="reports.html" class="nav-link">
+                    <span>▧</span> Reports
+                </a>
+
+                <a href="receipts.html" class="nav-link">
+                    <span>▤</span> Receipts & Invoices
+                </a>
+
+                <a href="staff.html" class="nav-link">
+                    <span>♧</span> Staff Management
+                </a>
+
+                <a href="settings.html" class="nav-link">
+                    <span>⚙</span> Settings
+                </a>
+
+                <a href="audit-logs.html" class="nav-link">
+                    <span>◷</span> Audit Logs
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Air Ticket Agency Management</p>
+                <small>Version 1.0</small>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        id="sidebar-toggle"
+                        class="menu-toggle"
+                        aria-label="Toggle menu"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+                        <h1>Bookings</h1>
+                        <p>Manage your agency bookings</p>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="user-info">
+
+                        <div class="user-avatar" id="user-avatar">
+                            U
+                        </div>
+
+                        <div>
+                            <strong id="user-name">Loading...</strong>
+                            <small id="user-role">Staff</small>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                        class="btn btn-outline logout-button"
+                    >
+                        Logout
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- Booking Content -->
+            <section class="bookings-content">
+
+                <!-- Page Heading -->
+                <div class="page-heading">
+
+                    <div>
+                        <h2>Booking Management</h2>
+                        <p>
+                            View, search and manage all customer bookings.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="new-booking-button"
+                    >
+                        + New Booking
+                    </button>
+
+                </div>
+
+
+                <!-- Search and Filter -->
+                <div class="booking-toolbar card">
+
+                    <div class="booking-search">
+
+                        <label for="booking-search">
+                            Search Bookings
+                        </label>
+
+                        <input
+                            type="search"
+                            id="booking-search"
+                            placeholder="Search by origin or destination..."
+                        >
+
+                    </div>
+
+                    <div class="booking-filter">
+
+                        <label for="status-filter">
+                            Booking Status
+                        </label>
+
+                        <select id="status-filter">
+
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="submitted">Submitted</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="issued">Issued</option>
+                            <option value="cancelled">Cancelled</option>
+
+                        </select>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="search-button"
+                    >
+                        Search
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="reset-button"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+
+                <!-- Messages -->
+                <div
+                    id="booking-message"
+                    class="alert"
+                    role="status"
+                    hidden
+                ></div>
+
+
+                <!-- Booking List -->
+                <div class="booking-table-card card">
+
+                    <div class="table-header">
+
+                        <div>
+                            <h3>All Bookings</h3>
+                            <p id="booking-count">
+                                Loading bookings...
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="refresh-button"
+                        >
+                            ↻ Refresh
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Booking Date</th>
+                                    <th>Travel Date</th>
+                                    <th>Route</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="bookings-table-body">
+
+                                <tr>
+                                    <td colspan="6" class="table-empty">
+                                        Loading bookings...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+
+                        <button
+                            type="button"
+                            id="previous-page"
+                            class="btn btn-outline"
+                            disabled
+                        >
+                            Previous
+                        </button>
+
+                        <span id="page-info">
+                            Page 1
+                        </span>
+
+                        <button
+                            type="button"
+                            id="next-page"
+                            class="btn btn-outline"
+                            disabled
+                        >
+                            Next
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Footer -->
+                <footer class="dashboard-footer">
+                    © 2026 Air Ticket Agency Management. All rights reserved.
+                </footer>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+    <script src="../js/bookings.js"></script>
+
+</body>
+</html>

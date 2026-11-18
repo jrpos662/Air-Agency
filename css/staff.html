@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>Staff Management | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/staff.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">AT</div>
+            <div>
+                <h2>Air Agency</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-heading">MAIN MENU</div>
+
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="bookings.html" class="nav-link">Bookings</a>
+            <a href="ticket-sales.html" class="nav-link">Ticket Sales</a>
+            <a href="customers.html" class="nav-link">Customers</a>
+            <a href="customer-payments.html" class="nav-link">Customer Payments</a>
+            <a href="receipts.html" class="nav-link">Receipts</a>
+
+            <div class="nav-heading">AGENCY MANAGEMENT</div>
+
+            <a href="agencies.html" class="nav-link">Agencies</a>
+            <a href="agency-accounts.html" class="nav-link">Agency Accounts</a>
+
+            <div class="nav-heading">FINANCIAL MANAGEMENT</div>
+
+            <a href="expenses.html" class="nav-link">Expenses</a>
+            <a href="cash-bank.html" class="nav-link">Cash &amp; Bank</a>
+            <a href="account-transfer-history.html" class="nav-link">Transfer History</a>
+            <a href="cash-transactions.html" class="nav-link">All Transactions</a>
+
+            <div class="nav-heading">MANAGEMENT</div>
+
+            <a href="reports.html" class="nav-link">Reports</a>
+            <a href="staff.html" class="nav-link active">Staff</a>
+            <a href="audit-logs.html" class="nav-link">Audit Logs</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Air Ticket Agency Management</span>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="sidebar-toggle"
+                    aria-label="Toggle navigation"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Staff Management</h1>
+                    <p>Manage your agency staff and access roles</p>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+
+                    <div>
+                        <strong id="user-name">Loading...</strong>
+                        <span id="user-role">Staff</span>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-outline logout-button"
+                    id="logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+        <section class="staff-content">
+
+            <div class="staff-page-heading">
+
+                <div>
+                    <h2>Staff Members</h2>
+                    <p>View staff accounts, assigned roles and account status.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="add-staff-button"
+                >
+                    + Add Staff
+                </button>
+
+            </div>
+
+            <div
+                id="staff-message"
+                class="alert"
+                role="status"
+                hidden
+            ></div>
+
+            <!-- SUMMARY -->
+            <div class="staff-summary-grid">
+
+                <div class="staff-summary-card">
+                    <div class="staff-summary-icon">ST</div>
+                    <div>
+                        <span>Total Staff</span>
+                        <h3 id="staff-total-count">0</h3>
+                    </div>
+                </div>
+
+                <div class="staff-summary-card">
+                    <div class="staff-summary-icon">AC</div>
+                    <div>
+                        <span>Active Accounts</span>
+                        <h3 id="staff-active-count">0</h3>
+                    </div>
+                </div>
+
+                <div class="staff-summary-card">
+                    <div class="staff-summary-icon">IN</div>
+                    <div>
+                        <span>Inactive Accounts</span>
+                        <h3 id="staff-inactive-count">0</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- STAFF FILTERS -->
+            <div class="staff-filter-card">
+
+                <div class="staff-filter-grid">
+
+                    <div class="form-group">
+                        <label for="staff-search">Search Staff</label>
+                        <input
+                            type="search"
+                            id="staff-search"
+                            placeholder="Search by name or email..."
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="staff-role-filter">Staff Role</label>
+                        <select id="staff-role-filter">
+                            <option value="all">All Roles</option>
+                            <option value="owner">Owner</option>
+                            <option value="manager">Manager</option>
+                            <option value="ticket_staff">Ticket Staff</option>
+                            <option value="accounts_staff">Accounts Staff</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="staff-status-filter">Account Status</label>
+                        <select id="staff-status-filter">
+                            <option value="all">All Statuses</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="staff-filter-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="staff-search-button"
+                    >
+                        Search
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="staff-reset-button"
+                    >
+                        Reset
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="staff-refresh-button"
+                    >
+                        Refresh
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- STAFF TABLE -->
+            <div class="staff-table-card">
+
+                <div class="staff-table-header">
+                    <div>
+                        <h3>Staff Directory</h3>
+                        <p>Agency user accounts and assigned permissions</p>
+                    </div>
+
+                    <span id="staff-record-count">0 staff members</span>
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="data-table">
+
+                        <thead>
+                            <tr>
+                                <th>Staff Member</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Account Status</th>
+                                <th>Joined Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="staff-table-body">
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    Loading staff members...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="staff-pagination">
+
+                    <span id="staff-page-info">Page 1 of 1</span>
+
+                    <div class="pagination-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="staff-previous-page"
+                            disabled
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="staff-next-page"
+                            disabled
+                        >
+                            Next
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>
+                &copy; 2026 Air Ticket Agency Management.
+                All rights reserved.
+            </p>
+        </footer>
+
+    </main>
+
+</div>
+
+<!-- ADD STAFF MODAL -->
+<div class="modal-overlay" id="staff-modal" hidden>
+
+    <div
+        class="modal staff-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="staff-modal-title"
+    >
+
+        <div class="modal-header">
+
+            <div>
+                <h3 id="staff-modal-title">Add Staff Member</h3>
+                <p>Create a new agency staff account.</p>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="staff-modal-close"
+                aria-label="Close"
+            >
+                &times;
+            </button>
+
+        </div>
+
+        <form id="staff-form">
+
+            <div class="form-group">
+                <label for="staff-full-name">Full Name</label>
+                <input
+                    type="text"
+                    id="staff-full-name"
+                    required
+                    maxlength="120"
+                    placeholder="Enter full name"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="staff-email">Email Address</label>
+                <input
+                    type="email"
+                    id="staff-email"
+                    required
+                    maxlength="254"
+                    placeholder="Enter email address"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="staff-role">Assign Role</label>
+                <select id="staff-role" required>
+                    <option value="">Select Role</option>
+                    <option value="manager">Manager</option>
+                    <option value="ticket_staff">Ticket Staff</option>
+                    <option value="accounts_staff">Accounts Staff</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="staff-password">Temporary Password</label>
+                <input
+                    type="password"
+                    id="staff-password"
+                    required
+                    minlength="8"
+                    autocomplete="new-password"
+                    placeholder="Minimum 8 characters"
+                >
+            </div>
+
+            <div class="staff-modal-note">
+                Staff account creation and role assignment will be
+                processed securely through the backend.
+            </div>
+
+            <div class="staff-modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-outline"
+                    id="staff-cancel-button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="staff-save-button"
+                >
+                    Create Staff Account
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/staff.js"></script>
+
+</body>
+</html>

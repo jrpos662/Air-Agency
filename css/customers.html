@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>Customers | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/customers.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">AT</div>
+            <div>
+                <h2>Air Ticket Agency</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-heading">MAIN MENU</div>
+
+            <a href="dashboard.html" class="nav-link">
+                Dashboard
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                Bookings
+            </a>
+
+            <a href="ticket-sales.html" class="nav-link">
+                Ticket Sales
+            </a>
+
+            <a href="customers.html" class="nav-link active">
+                Customers
+            </a>
+
+            <div class="nav-heading">FINANCE</div>
+
+            <a href="customer-payments.html" class="nav-link">
+                Customer Payments
+            </a>
+
+            <a href="agencies.html" class="nav-link">
+                Source Agencies
+            </a>
+
+            <a href="agency-accounts.html" class="nav-link">
+                Agency Accounts
+            </a>
+
+            <a href="expenses.html" class="nav-link">
+                Expenses
+            </a>
+
+            <a href="cash-bank.html" class="nav-link">
+                Cash & Bank
+            </a>
+
+            <a href="refunds.html" class="nav-link">
+                Refunds & Changes
+            </a>
+
+            <div class="nav-heading">MANAGEMENT</div>
+
+            <a href="reports.html" class="nav-link">
+                Reports
+            </a>
+
+            <a href="receipts.html" class="nav-link">
+                Receipts
+            </a>
+
+            <a href="staff.html" class="nav-link">
+                Staff Management
+            </a>
+
+            <a href="settings.html" class="nav-link">
+                Settings
+            </a>
+
+            <a href="audit-logs.html" class="nav-link">
+                Audit Logs
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Air Ticket Agency Management</span>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="sidebar-toggle"
+                    aria-label="Toggle menu"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Customers</h1>
+                    <p>Manage your agency customers.</p>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+
+                    <div>
+                        <strong id="user-name">Loading...</strong>
+                        <span id="user-role">User</span>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-outline logout-button"
+                    id="logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+        <section class="customers-content">
+
+            <div class="page-heading">
+
+                <div>
+                    <h2>Customer Directory</h2>
+                    <p>
+                        View, search and manage customer information.
+                    </p>
+                </div>
+
+                <a
+                    href="new-customer.html"
+                    class="btn btn-primary"
+                    id="new-customer-button"
+                >
+                    + Add Customer
+                </a>
+
+            </div>
+
+            <!-- Customer Statistics -->
+
+            <div class="customer-stats-grid">
+
+                <div class="customer-stat-card">
+                    <div class="customer-stat-icon">👥</div>
+                    <div>
+                        <span>Total Customers</span>
+                        <strong id="total-customers">0</strong>
+                    </div>
+                </div>
+
+                <div class="customer-stat-card">
+                    <div class="customer-stat-icon">✓</div>
+                    <div>
+                        <span>Active Customers</span>
+                        <strong id="active-customers">0</strong>
+                    </div>
+                </div>
+
+                <div class="customer-stat-card">
+                    <div class="customer-stat-icon">◷</div>
+                    <div>
+                        <span>Inactive Customers</span>
+                        <strong id="inactive-customers">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Search and Filters -->
+
+            <div class="customer-toolbar">
+
+                <div class="customer-search">
+
+                    <input
+                        type="search"
+                        id="customer-search"
+                        placeholder="Search by name, phone or email..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="customer-search-button"
+                    >
+                        Search
+                    </button>
+
+                </div>
+
+                <div class="customer-filters">
+
+                    <select id="customer-status-filter">
+                        <option value="all">All Customers</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="customer-reset-button"
+                    >
+                        Reset
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="customer-refresh-button"
+                    >
+                        Refresh
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div
+                id="customers-message"
+                class="customers-message"
+                role="status"
+            ></div>
+
+            <!-- Customer Table -->
+
+            <section class="customer-table-card">
+
+                <div class="table-header">
+
+                    <div>
+                        <h3>All Customers</h3>
+                        <p>
+                            Customer records and contact information.
+                        </p>
+                    </div>
+
+                    <span id="customer-count">
+                        0 Customers
+                    </span>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="data-table">
+
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Customer Name</th>
+                                <th>Phone Number</th>
+                                <th>Email Address</th>
+                                <th>Customer Since</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="customers-table-body">
+
+                            <tr>
+                                <td colspan="7" class="table-empty">
+                                    Loading customers...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Pagination -->
+
+                <div class="customer-pagination">
+
+                    <span id="customer-page-info">
+                        Page 1
+                    </span>
+
+                    <div>
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="customer-previous-page"
+                            disabled
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="customer-next-page"
+                            disabled
+                        >
+                            Next
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <footer class="dashboard-footer">
+            © 2026 Air Ticket Agency Management. All rights reserved.
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/customers.js"></script>
+
+</body>
+</html>

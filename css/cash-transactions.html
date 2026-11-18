@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <meta
+        name="description"
+        content="View and manage all cash, bank and account transactions."
+    >
+
+    <title>All Transactions | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/cash-transactions.css">
+</head>
+
+<body class="dashboard-page">
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-logo">AT</div>
+
+                <div>
+                    <h2>Air Agency</h2>
+                    <span>Management System</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <div class="nav-heading">Main Menu</div>
+
+                <a href="dashboard.html" class="nav-link">
+                    Dashboard
+                </a>
+
+                <a href="bookings.html" class="nav-link">
+                    Bookings
+                </a>
+
+                <a href="ticket-sales.html" class="nav-link">
+                    Ticket Sales
+                </a>
+
+                <a href="customers.html" class="nav-link">
+                    Customers
+                </a>
+
+                <a href="agencies.html" class="nav-link">
+                    Agencies
+                </a>
+
+                <div class="nav-heading">Accounts</div>
+
+                <a href="expenses.html" class="nav-link">
+                    Expenses
+                </a>
+
+                <a href="cash-bank.html" class="nav-link">
+                    Cash &amp; Bank
+                </a>
+
+                <a href="account-transfer.html" class="nav-link">
+                    Account Transfer
+                </a>
+
+                <a href="account-transfer-history.html" class="nav-link">
+                    Transfer History
+                </a>
+
+                <a href="cash-transactions.html" class="nav-link active" aria-current="page">
+                    All Transactions
+                </a>
+
+                <div class="nav-heading">System</div>
+
+                <a href="reports.html" class="nav-link">
+                    Reports
+                </a>
+
+                <a href="staff.html" class="nav-link">
+                    Staff
+                </a>
+
+                <a href="settings.html" class="nav-link">
+                    Settings
+                </a>
+
+                <a href="audit-logs.html" class="nav-link">
+                    Audit Logs
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <span>Air Ticket Agency Management</span>
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Topbar -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="menu-toggle"
+                        id="sidebar-toggle"
+                        aria-label="Toggle navigation"
+                        aria-controls="sidebar"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+                        <h1>All Transactions</h1>
+                        <p>View and manage cash and bank transactions</p>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="user-info">
+
+                        <div class="user-avatar" id="user-avatar">
+                            U
+                        </div>
+
+                        <div>
+                            <strong id="user-name">Loading...</strong>
+                            <span id="user-role">User</span>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline logout-button"
+                        id="logout-button"
+                    >
+                        Logout
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- Page Content -->
+            <section class="cash-transactions-content">
+
+                <!-- Page Heading -->
+                <div class="page-heading">
+
+                    <div>
+                        <h2>Transaction History</h2>
+                        <p>
+                            Complete financial account transaction records
+                        </p>
+                    </div>
+
+                    <div class="heading-actions">
+
+                        <a
+                            href="cash-bank.html"
+                            class="btn btn-outline"
+                        >
+                            Back to Cash &amp; Bank
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="refresh-all-transactions"
+                        >
+                            Refresh
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Message -->
+                <div
+                    id="cash-transactions-message"
+                    class="cash-transactions-message"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <!-- Summary -->
+                <div class="transaction-summary-grid">
+
+                    <div class="card transaction-summary-card">
+                        <span class="summary-label">
+                            Total Transactions
+                        </span>
+
+                        <strong id="all-total-count">0</strong>
+
+                        <small>Recorded transactions</small>
+                    </div>
+
+                    <div class="card transaction-summary-card">
+                        <span class="summary-label">
+                            Total Money In
+                        </span>
+
+                        <strong id="all-total-in">৳0.00</strong>
+
+                        <small class="text-success">
+                            Account credits
+                        </small>
+                    </div>
+
+                    <div class="card transaction-summary-card">
+                        <span class="summary-label">
+                            Total Money Out
+                        </span>
+
+                        <strong id="all-total-out">৳0.00</strong>
+
+                        <small class="text-danger">
+                            Account debits
+                        </small>
+                    </div>
+
+                    <div class="card transaction-summary-card">
+                        <span class="summary-label">
+                            Net Movement
+                        </span>
+
+                        <strong id="all-net-movement">৳0.00</strong>
+
+                        <small>In minus Out</small>
+                    </div>
+
+                </div>
+
+                <!-- Filters -->
+                <div class="card transaction-filter-card">
+
+                    <div class="filter-card-heading">
+                        <h3>Filter Transactions</h3>
+                    </div>
+
+                    <div class="transaction-filter-grid">
+
+                        <div class="form-group search-filter">
+                            <label for="all-transaction-search">
+                                Search
+                            </label>
+
+                            <input
+                                type="search"
+                                id="all-transaction-search"
+                                placeholder="Search account, reference or description..."
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="all-account-filter">
+                                Account
+                            </label>
+
+                            <select id="all-account-filter">
+                                <option value="all">All Accounts</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="all-account-type-filter">
+                                Account Type
+                            </label>
+
+                            <select id="all-account-type-filter">
+                                <option value="all">All Types</option>
+                                <option value="cash">Cash</option>
+                                <option value="bank">Bank</option>
+                                <option value="mobile_banking">
+                                    Mobile Banking
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="all-transaction-type-filter">
+                                Transaction Type
+                            </label>
+
+                            <select id="all-transaction-type-filter">
+                                <option value="all">All Transactions</option>
+                                <option value="in">Money In</option>
+                                <option value="out">Money Out</option>
+                                <option value="transfer">Transfer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="all-date-from">Date From</label>
+
+                            <input
+                                type="date"
+                                id="all-date-from"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="all-date-to">Date To</label>
+
+                            <input
+                                type="date"
+                                id="all-date-to"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="transaction-filter-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="all-transaction-search-button"
+                        >
+                            Apply Filters
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-outline"
+                            id="all-transaction-reset-button"
+                        >
+                            Reset
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Transactions Table -->
+                <div class="card transaction-table-card">
+
+                    <div class="table-card-heading">
+
+                        <div>
+                            <h3>All Transactions</h3>
+
+                            <p id="all-transaction-count">
+                                0 transactions found
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Account</th>
+                                    <th>Type</th>
+                                    <th>Reference</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="all-transactions-table-body">
+
+                                <tr>
+                                    <td colspan="7" class="empty-state">
+                                        Loading transactions...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="table-pagination">
+
+                        <div class="pagination-info">
+                            <span id="all-transaction-page-info">
+                                Page 1 of 1
+                            </span>
+                        </div>
+
+                        <div class="pagination-actions">
+
+                            <button
+                                type="button"
+                                class="btn btn-outline btn-sm"
+                                id="all-transaction-previous-page"
+                                disabled
+                            >
+                                Previous
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn btn-outline btn-sm"
+                                id="all-transaction-next-page"
+                                disabled
+                            >
+                                Next
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Footer -->
+            <footer class="dashboard-footer">
+                <p>
+                    © 2026 Air Ticket Agency Management.
+                    All rights reserved.
+                </p>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+    <script src="../js/cash-transactions.js"></script>
+
+</body>
+</html>

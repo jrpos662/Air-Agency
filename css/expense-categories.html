@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>Expense Categories | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/expense-categories.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">AT</div>
+            <div>
+                <h2>Air Agency</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-heading">Main Menu</div>
+
+            <a href="dashboard.html" class="nav-link">
+                <span>Dashboard</span>
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                <span>Bookings</span>
+            </a>
+
+            <a href="ticket-sales.html" class="nav-link">
+                <span>Ticket Sales</span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <span>Customers</span>
+            </a>
+
+            <a href="customer-payments.html" class="nav-link">
+                <span>Customer Payments</span>
+            </a>
+
+            <a href="agencies.html" class="nav-link">
+                <span>Agencies</span>
+            </a>
+
+            <a href="expenses.html" class="nav-link active">
+                <span>Expenses</span>
+            </a>
+
+            <a href="cash-bank.html" class="nav-link">
+                <span>Cash & Bank</span>
+            </a>
+
+            <a href="refunds.html" class="nav-link">
+                <span>Refunds</span>
+            </a>
+
+            <div class="nav-heading">Management</div>
+
+            <a href="reports.html" class="nav-link">
+                <span>Reports</span>
+            </a>
+
+            <a href="staff.html" class="nav-link">
+                <span>Staff Management</span>
+            </a>
+
+            <a href="settings.html" class="nav-link">
+                <span>Settings</span>
+            </a>
+
+            <a href="audit-logs.html" class="nav-link">
+                <span>Audit Logs</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Air Ticket Agency Management</span>
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button type="button"
+                        class="menu-toggle"
+                        id="sidebar-toggle">
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Expense Categories</h1>
+                    <p>Manage your business expense categories</p>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="user-info">
+
+                    <div class="user-avatar" id="user-avatar">U</div>
+
+                    <div>
+                        <strong id="user-name">User</strong>
+                        <small id="user-role">Staff</small>
+                    </div>
+
+                </div>
+
+                <button type="button"
+                        class="btn btn-outline logout-button"
+                        id="logout-button">
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Page Content -->
+        <section class="expense-categories-content">
+
+            <div class="page-heading">
+
+                <div>
+                    <h2>Expense Categories</h2>
+                    <p>Create and manage categories for business expenses.</p>
+                </div>
+
+                <div class="page-heading-actions">
+
+                    <a href="expenses.html" class="btn btn-outline">
+                        Back to Expenses
+                    </a>
+
+                    <button type="button"
+                            class="btn btn-primary"
+                            id="add-category-button">
+                        + Add Category
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Message -->
+            <div id="categories-message"
+                 class="categories-message"
+                 role="status"
+                 aria-live="polite">
+            </div>
+
+            <!-- Statistics -->
+            <div class="category-stats">
+
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <span>Total Categories</span>
+                        <h3 id="total-categories">0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <span>Active Categories</span>
+                        <h3 id="active-categories">0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <span>Inactive Categories</span>
+                        <h3 id="inactive-categories">0</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Search -->
+            <div class="category-toolbar">
+
+                <div class="category-search">
+
+                    <input type="search"
+                           id="category-search"
+                           placeholder="Search category name..."
+                           autocomplete="off">
+
+                    <button type="button"
+                            class="btn btn-primary"
+                            id="category-search-button">
+                        Search
+                    </button>
+
+                </div>
+
+                <div class="category-filters">
+
+                    <select id="category-status-filter">
+                        <option value="all">All Categories</option>
+                        <option value="active">Active Only</option>
+                        <option value="inactive">Inactive Only</option>
+                    </select>
+
+                    <button type="button"
+                            class="btn btn-outline"
+                            id="category-reset-button">
+                        Reset
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-outline"
+                            id="category-refresh-button">
+                        Refresh
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Categories Table -->
+            <div class="category-table-card">
+
+                <div class="category-table-header">
+                    <div>
+                        <h3>Category List</h3>
+                        <p>All registered expense categories</p>
+                    </div>
+
+                    <span id="category-count">0 Categories</span>
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="data-table">
+
+                        <thead>
+                            <tr>
+                                <th>Category Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Created Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="categories-table-body">
+
+                            <tr>
+                                <td colspan="5" class="empty-state">
+                                    Loading categories...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="category-table-footer">
+
+                    <div id="category-page-info">
+                        Showing 0 of 0
+                    </div>
+
+                    <div class="pagination">
+
+                        <button type="button"
+                                id="category-previous-page"
+                                class="btn btn-outline"
+                                disabled>
+                            Previous
+                        </button>
+
+                        <button type="button"
+                                id="category-next-page"
+                                class="btn btn-outline"
+                                disabled>
+                            Next
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Add / Edit Category Modal -->
+        <div class="modal-overlay"
+             id="category-modal"
+             aria-hidden="true">
+
+            <div class="modal category-modal">
+
+                <div class="modal-header">
+
+                    <div>
+                        <h3 id="category-modal-title">Add Expense Category</h3>
+                        <p>Create a new expense category.</p>
+                    </div>
+
+                    <button type="button"
+                            class="modal-close"
+                            id="close-category-modal"
+                            aria-label="Close">
+                        &times;
+                    </button>
+
+                </div>
+
+                <form id="category-form">
+
+                    <div class="modal-body">
+
+                        <input type="hidden" id="category-id">
+
+                        <div class="form-group">
+
+                            <label for="category-name">
+                                Category Name <span>*</span>
+                            </label>
+
+                            <input type="text"
+                                   id="category-name"
+                                   maxlength="100"
+                                   placeholder="e.g. Office Rent"
+                                   required>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="category-description">
+                                Description
+                            </label>
+
+                            <textarea id="category-description"
+                                      rows="3"
+                                      maxlength="500"
+                                      placeholder="Enter category description (optional)"></textarea>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="category-status">
+                                Status
+                            </label>
+
+                            <select id="category-status">
+                                <option value="true">Active</option>
+                                <option value="false">Inactive</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button"
+                                class="btn btn-outline"
+                                id="cancel-category-button">
+                            Cancel
+                        </button>
+
+                        <button type="submit"
+                                class="btn btn-primary"
+                                id="save-category-button">
+                            Save Category
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>© 2026 Air Ticket Agency Management. All rights reserved.</p>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/expense-categories.js"></script>
+
+</body>
+</html>
