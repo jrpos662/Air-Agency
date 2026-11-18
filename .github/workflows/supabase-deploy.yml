@@ -1,7 +1,5 @@
 name: Deploy Supabase (migrations + Edge Functions)
 
-# main ব্রাঞ্চে supabase/migrations বা supabase/functions বদলালে নিজে চলবে।
-# Actions ট্যাব থেকে হাতেও চালানো যাবে (Run workflow)।
 on:
   push:
     branches: [main]
@@ -50,4 +48,4 @@ jobs:
           version: latest
 
       - name: Deploy all Edge Functions
-        run: supabase functions deploy --project-ref "$SUPABASE_PROJECT_ID"
+        run: supabase functions deploy --remote="$SUPABASE_PROJECT_ID" --yes
