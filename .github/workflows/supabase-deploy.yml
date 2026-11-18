@@ -36,7 +36,7 @@ jobs:
         run: supabase link --project-ref "$SUPABASE_PROJECT_ID"
 
       - name: Apply new migrations
-        run: supabase db push
+        run: supabase db push --remote
 
   functions:
     name: Edge Functions
