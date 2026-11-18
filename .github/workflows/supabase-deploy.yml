@@ -33,13 +33,10 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v3
         with:
-          version: v2.stable
-
-      - name: Link Supabase project
-        run: supabase link --project-ref "$SUPABASE_PROJECT_ID"
+          version: ^3
 
       - name: Apply database migrations
-        run: supabase db push --yes --remote
+        run: supabase db push --yes --remote="$SUPABASE_PROJECT_ID"
 
   functions:
     name: Deploy Edge Functions
@@ -53,7 +50,7 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v3
         with:
-          version: v2.stable
+          version: ^3
 
       - name: Deploy Edge Functions
         run: supabase functions deploy --remote="$SUPABASE_PROJECT_ID" --yes
