@@ -2,12 +2,14 @@ name: Deploy Supabase (migrations + Edge Functions)
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - "supabase/migrations/**"
       - "supabase/functions/**"
       - "supabase/config.toml"
       - ".github/workflows/supabase-deploy.yml"
+
   workflow_dispatch:
 
 concurrency:
@@ -23,29 +25,35 @@ jobs:
   migrations:
     name: Database migrations
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: supabase/setup-cli@v1
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v3
         with:
-          version: latest
+          version: v2.stable
 
-      - name: Link project
+      - name: Link Supabase project
         run: supabase link --project-ref "$SUPABASE_PROJECT_ID"
 
-      - name: Apply new migrations
+      - name: Apply database migrations
         run: supabase db push --yes --remote
 
   functions:
-    name: Edge Functions
+    name: Deploy Edge Functions
     needs: migrations
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: supabase/setup-cli@v1
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v3
         with:
-          version: latest
+          version: v2.stable
 
-      - name: Deploy all Edge Functions
+      - name: Deploy Edge Functions
         run: supabase functions deploy --remote="$SUPABASE_PROJECT_ID" --yes
