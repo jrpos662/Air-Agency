@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Air Ticket Agency Management
 ## সফটওয়্যারের পরিচিতি, ফিচার ও ডেভেলপমেন্ট পরিকল্পনা
 
@@ -320,3 +321,6 @@ Air_Ticket_Agency_Management/
 একটি নিরাপদ, নির্ভরযোগ্য, বাংলা ভাষার Air Ticket Agency Management Software তৈরি করা, যেখানে Booking, Direct Ticket Sale, Multiple Agency, Customer, Payments, Due, Expenses, Cash/Bank, Refund, Reports, Profit/Loss, Staff Permissions, Invoice এবং Audit History একসঙ্গে পরিচালনা করা যাবে।
 
 **Development Status:** Initial Folder Structure তৈরি। বাকি ফিচারগুলো Roadmap অনুযায়ী ধাপে ধাপে বাস্তবায়ন ও পরীক্ষা করতে হবে।
+=======
+# Air-Agency
+>>>>>>> 367183f9ad464274373a799e16f7ebc4d0933b61
