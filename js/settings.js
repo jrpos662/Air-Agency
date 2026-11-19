@@ -211,6 +211,68 @@
        POPULATE FORMS
     ===================================================== */
 
+
+    /* =====================================================
+       LOGO (resized in the browser, stored with agency settings)
+    ===================================================== */
+
+    let logoData = "";
+
+    function renderLogoPreview() {
+        const box = $("agency-logo-preview");
+        const rm = $("agency-logo-remove");
+        if (box) {
+            box.innerHTML = "";
+            if (logoData) {
+                const img = document.createElement("img");
+                img.src = logoData;
+                img.alt = "Logo preview";
+                img.style.cssText = "max-height:64px;max-width:160px";
+                box.appendChild(img);
+            }
+        }
+        if (rm) rm.hidden = !logoData;
+    }
+
+    function initLogoInput() {
+        const input = $("agency-logo");
+        const rm = $("agency-logo-remove");
+        if (rm) rm.addEventListener("click", function () {
+            logoData = "";
+            if (input) input.value = "";
+            renderLogoPreview();
+        });
+        if (!input) return;
+        input.addEventListener("change", function () {
+            const file = input.files && input.files[0];
+            if (!file) return;
+            if (file.size > 3 * 1024 * 1024) {
+                showSettingsMessage("Logo file is too large (max 3 MB).", "error");
+                input.value = "";
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function () {
+                const img = new Image();
+                img.onload = function () {
+                    const max = 160;
+                    const scale = Math.min(1, max / Math.max(img.width, img.height));
+                    const c = document.createElement("canvas");
+                    c.width = Math.max(1, Math.round(img.width * scale));
+                    c.height = Math.max(1, Math.round(img.height * scale));
+                    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+                    logoData = c.toDataURL("image/png");
+                    renderLogoPreview();
+                };
+                img.onerror = function () {
+                    showSettingsMessage("This image could not be read.", "error");
+                };
+                img.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
     function populateSettingsForms(settings) {
         const agency = settings.agency;
         const receipt = settings.receipt;
@@ -222,6 +284,8 @@
         setValue("agency-email", agency.email);
         setValue("agency-website", agency.website);
         setValue("agency-address", agency.address);
+        logoData = agency.logo || "";
+        renderLogoPreview();
 
         setValue("receipt-title", receipt.title);
         setValue("receipt-footer", receipt.footer);
@@ -268,6 +332,7 @@
     ===================================================== */
 
     function initializeSettingsForms() {
+        initLogoInput();
         bindForm("agency-settings-form", "agency");
         bindForm("receipt-settings-form", "receipt");
         bindForm("regional-settings-form", "regional");
@@ -323,7 +388,8 @@
                     phone: getInput("agency-phone"),
                     email: getInput("agency-email"),
                     website: getInput("agency-website"),
-                    address: getInput("agency-address")
+                    address: getInput("agency-address"),
+                    logo: logoData
                 };
 
             case "receipt":
@@ -414,6 +480,10 @@
             }
 
             currentSettings = payload;
+
+            if (window.AppSettings) {
+                window.AppSettings.set(payload);
+            }
 
             showSettingsMessage(
                 data.message || "Settings saved successfully.",

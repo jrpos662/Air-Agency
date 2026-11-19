@@ -49,6 +49,7 @@
         "new-customer-payment.html": "customer-payments.html",
         "customer-payment-details.html": "customer-payments.html",
         "new-agency.html": "agencies.html",
+        "new-agency-payment.html": "agencies.html",
         "agency-details.html": "agencies.html",
         "new-expense.html": "expenses.html",
         "cash-transaction-details.html": "cash-transactions.html",
@@ -85,6 +86,10 @@
             '</div>' +
             '<nav class="sidebar-nav" aria-label="Main navigation">' + buildNav(currentPage()) + '</nav>' +
             '<div class="sidebar-footer"><p>Air Ticket Agency Management</p><small>Version 1.0</small></div>';
+
+        if (window.AppSettings && window.AppSettings.apply) {
+            window.AppSettings.apply();
+        }
 
         // Keep the active link visible inside the sidebar only; never scroll
         // the document itself while a page is initializing.

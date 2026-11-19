@@ -343,6 +343,12 @@
                 throw new Error("Agency ID is missing from the page URL.");
             }
 
+            const payButton = $("pay-agency-button");
+            if (payButton) {
+                payButton.href =
+                    `new-agency-payment.html?id=${encodeURIComponent(agencyId)}`;
+            }
+
             await initializeSupabase();
 
             const authenticated = await checkSession();
