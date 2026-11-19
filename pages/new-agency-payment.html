@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>Agency Payment | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/new-agency.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-logo">AT</div>
+            <div>
+                <h2>Air Agency</h2>
+                <span>Management System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-heading">Main Menu</div>
+
+            <a href="dashboard.html" class="nav-link">
+                <span class="nav-icon">▦</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                <span class="nav-icon">▤</span>
+                <span>Bookings</span>
+            </a>
+
+            <a href="ticket-sales.html" class="nav-link">
+                <span class="nav-icon">✈</span>
+                <span>Ticket Sales</span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                <span>Customers</span>
+            </a>
+
+            <a href="customer-payments.html" class="nav-link">
+                <span class="nav-icon">৳</span>
+                <span>Customer Payments</span>
+            </a>
+
+            <div class="nav-heading">Agency Management</div>
+
+            <a href="agencies.html" class="nav-link active">
+                <span class="nav-icon">▣</span>
+                <span>Agencies</span>
+            </a>
+
+            <a href="agency-accounts.html" class="nav-link">
+                <span class="nav-icon">▤</span>
+                <span>Agency Accounts</span>
+            </a>
+
+            <div class="nav-heading">Finance</div>
+
+            <a href="expenses.html" class="nav-link">
+                <span class="nav-icon">↗</span>
+                <span>Expenses</span>
+            </a>
+
+            <a href="cash-bank.html" class="nav-link">
+                <span class="nav-icon">▣</span>
+                <span>Cash & Bank</span>
+            </a>
+
+            <a href="refunds.html" class="nav-link">
+                <span class="nav-icon">↩</span>
+                <span>Refunds & Changes</span>
+            </a>
+
+            <div class="nav-heading">Reports & Settings</div>
+
+            <a href="reports.html" class="nav-link">
+                <span class="nav-icon">▥</span>
+                <span>Reports</span>
+            </a>
+
+            <a href="receipts.html" class="nav-link">
+                <span class="nav-icon">▧</span>
+                <span>Receipts</span>
+            </a>
+
+            <a href="staff.html" class="nav-link">
+                <span class="nav-icon">♧</span>
+                <span>Staff Management</span>
+            </a>
+
+            <a href="settings.html" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+            <a href="audit-logs.html" class="nav-link">
+                <span class="nav-icon">☷</span>
+                <span>Audit Logs</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Air Ticket Agency Management</span>
+            <small>Version 1.0</small>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="sidebar-toggle"
+                    aria-label="Toggle sidebar"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Agency Payment</h1>
+                    <p>Record a payment made to a source agency</p>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+
+                    <div>
+                        <strong id="user-name">Loading...</strong>
+                        <span id="user-role">User</span>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-outline logout-button"
+                    id="logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+        <section class="new-agency-content">
+
+            <div class="page-heading">
+
+                <div>
+                    <h2>Pay an Agency</h2>
+                    <p>Money is deducted from the account you choose and reduces what you owe the agency.</p>
+                </div>
+
+                <a href="agencies.html" class="btn btn-outline" id="ap-back-link">
+                    ← Back to Agencies
+                </a>
+
+            </div>
+
+            <div
+                id="new-agency-message"
+                class="new-agency-message"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+            <form id="agency-payment-form" class="agency-form" novalidate>
+
+                <div class="agency-form-card">
+                    <div class="form-card-header">
+                        <div>
+                            <h3>Payment Details</h3>
+                            <p>Choose the agency, how you paid and from which account.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-card-body">
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="ap-agency">Agency *</label>
+                                <select id="ap-agency" required><option value="">Loading agencies...</option></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ap-date">Payment Date *</label>
+                                <input type="date" id="ap-date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ap-amount">Amount (৳) *</label>
+                                <input type="number" id="ap-amount" min="0.01" step="0.01" inputmode="decimal" placeholder="0.00" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ap-method">Payment Method *</label>
+                                <select id="ap-method" required>
+                                    <option value="cash">Cash</option>
+                                    <option value="bank">Bank</option>
+                                    <option value="mobile_banking">Mobile Banking</option>
+                                    <option value="card">Card</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ap-account">Pay From Account *</label>
+                                <select id="ap-account" required><option value="">Loading accounts...</option></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ap-transaction-ref">Transaction Reference</label>
+                                <input type="text" id="ap-transaction-ref" maxlength="150" placeholder="Bank / bKash transaction ID">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ap-payment-ref">Payment Reference</label>
+                                <input type="text" id="ap-payment-ref" maxlength="100" placeholder="Leave empty to auto-generate">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="ap-notes">Notes</label>
+                                <textarea id="ap-notes" rows="3" maxlength="2000" placeholder="Optional notes"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="agency-form-actions">
+                    <button type="reset" class="btn btn-outline" id="reset-agency-form">Reset</button>
+                    <button type="submit" class="btn btn-primary" id="save-agency-payment-button">Save Payment</button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <footer class="dashboard-footer">
+            <span>© 2026 Air Ticket Agency Management</span>
+            <span>All rights reserved.</span>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/app-settings.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/new-agency-payment.js"></script>
+
+</body>
+</html>
+

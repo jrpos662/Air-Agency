@@ -219,6 +219,13 @@
                                 </div>
 
                                 <div class="form-group full-width">
+                                    <label for="agency-logo">Logo (shown in sidebar and on receipts)</label>
+                                    <input type="file" id="agency-logo" accept="image/png,image/jpeg,image/webp">
+                                    <div id="agency-logo-preview" style="margin-top:8px"></div>
+                                    <button type="button" id="agency-logo-remove" class="btn btn-outline" hidden>Remove logo</button>
+                                </div>
+
+                                <div class="form-group full-width">
                                     <label for="agency-address">Business Address</label>
                                     <textarea
                                         id="agency-address"
@@ -485,6 +492,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../js/supabase-config.js"></script>
 <script src="../js/auth.js"></script>
+<script src="../js/app-settings.js"></script>
 <script src="../js/sidebar.js"></script>
 <script src="../js/dashboard.js"></script>
 <script src="../js/settings.js"></script>
