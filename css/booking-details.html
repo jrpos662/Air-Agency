@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b91c35">
+
+    <title>Booking Details | Air Ticket Agency Management</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/booking-details.css">
+</head>
+
+<body class="booking-details-page">
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-logo">AT</div>
+                <div>
+                    <h2>Air Agency</h2>
+                    <span>Management System</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <span class="nav-heading">MAIN MENU</span>
+
+                <a href="dashboard.html" class="nav-link">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="bookings.html" class="nav-link active">
+                    <span>▤</span> Bookings
+                </a>
+
+                <a href="ticket-sales.html" class="nav-link">
+                    <span>✈</span> Ticket Sales
+                </a>
+
+                <a href="customers.html" class="nav-link">
+                    <span>♙</span> Customers
+                </a>
+
+                <span class="nav-heading">ACCOUNTS</span>
+
+                <a href="customer-payments.html" class="nav-link">
+                    <span>৳</span> Customer Payments
+                </a>
+
+                <a href="agencies.html" class="nav-link">
+                    <span>▣</span> Agencies
+                </a>
+
+                <a href="agency-accounts.html" class="nav-link">
+                    <span>▤</span> Agency Accounts
+                </a>
+
+                <a href="expenses.html" class="nav-link">
+                    <span>↘</span> Expenses
+                </a>
+
+                <a href="cash-bank.html" class="nav-link">
+                    <span>▥</span> Cash &amp; Bank
+                </a>
+
+                <span class="nav-heading">MANAGEMENT</span>
+
+                <a href="refunds.html" class="nav-link">
+                    <span>↩</span> Refunds &amp; Changes
+                </a>
+
+                <a href="reports.html" class="nav-link">
+                    <span>▧</span> Reports
+                </a>
+
+                <a href="receipts.html" class="nav-link">
+                    <span>▤</span> Receipts &amp; Invoices
+                </a>
+
+                <a href="staff.html" class="nav-link">
+                    <span>♧</span> Staff Management
+                </a>
+
+                <a href="settings.html" class="nav-link">
+                    <span>⚙</span> Settings
+                </a>
+
+                <a href="audit-logs.html" class="nav-link">
+                    <span>◷</span> Audit Logs
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Air Ticket Agency Management</p>
+                <small>Version 1.0</small>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        id="sidebar-toggle"
+                        class="menu-toggle"
+                        aria-label="Toggle menu"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+                        <h1>Booking Details</h1>
+                        <p>View booking and passenger information</p>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="user-info">
+
+                        <div class="user-avatar" id="user-avatar">
+                            U
+                        </div>
+
+                        <div>
+                            <strong id="user-name">Loading...</strong>
+                            <small id="user-role">Staff</small>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                        class="btn btn-outline logout-button"
+                    >
+                        Logout
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- Booking Details Content -->
+            <section class="booking-details-content">
+
+                <!-- Page Heading -->
+                <div class="page-heading">
+
+                    <div>
+                        <h2>Booking Information</h2>
+                        <p id="booking-reference">
+                            Booking reference: Loading...
+                        </p>
+                    </div>
+
+                    <div class="heading-actions">
+
+                        <a href="bookings.html" class="btn btn-outline">
+                            ← Back to Bookings
+                        </a>
+
+                        <button
+                            type="button"
+                            id="edit-booking-button"
+                            class="btn btn-primary"
+                            hidden
+                        >
+                            Edit Booking
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Message -->
+                <div
+                    id="details-message"
+                    class="alert"
+                    role="status"
+                    hidden
+                ></div>
+
+
+                <!-- Booking Summary -->
+                <div class="details-grid">
+
+                    <!-- Booking Information -->
+                    <div class="details-card card">
+
+                        <div class="details-card-heading">
+                            <h3>Booking Information</h3>
+
+                            <span
+                                id="booking-status"
+                                class="booking-status"
+                            >
+                                Loading...
+                            </span>
+                        </div>
+
+                        <div class="details-list">
+
+                            <div class="detail-item">
+                                <span>Booking ID</span>
+                                <strong id="detail-booking-id">—</strong>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>Booking Date</span>
+                                <strong id="detail-booking-date">—</strong>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>Travel Date</span>
+                                <strong id="detail-travel-date">—</strong>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>Source Agency</span>
+                                <strong id="detail-agency">—</strong>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>Quoted Amount</span>
+                                <strong id="detail-quoted-amount">৳ 0.00</strong>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>Advance Amount</span>
+                                <strong id="detail-advance-amount">৳ 0.00</strong>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>Created At</span>
+                                <strong id="detail-created-at">—</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Customer Information -->
+                    <div class="details-card card">
+
+                        <div class="details-card-heading">
+                            <h3>Customer Information</h3>
+                        </div>
+
+                        <div class="details-list">
+
+                            <div class="detail-item">
+                                <span>Customer Name</span>
+                                <strong id="detail-customer-name">—</strong>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>Phone Number</span>
+                                <strong id="detail-customer-phone">—</strong>
+                            </div>
+
+                            <div class="detail-item">
+                                <span>Email Address</span>
+                                <strong id="detail-customer-email">—</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Route Information -->
+                <div class="details-card card route-card">
+
+                    <div class="details-card-heading">
+                        <h3>Travel Route</h3>
+                    </div>
+
+                    <div class="route-display">
+
+                        <div class="route-point">
+                            <span class="route-label">FROM</span>
+                            <strong id="detail-origin">—</strong>
+                        </div>
+
+                        <div class="route-arrow">→</div>
+
+                        <div class="route-point">
+                            <span class="route-label">TO</span>
+                            <strong id="detail-destination">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Passenger Information -->
+                <div class="details-card card">
+
+                    <div class="details-card-heading">
+                        <div>
+                            <h3>Passenger Information</h3>
+                            <p id="passenger-count">
+                                Loading passengers...
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Passenger Name</th>
+                                    <th>Passport Number</th>
+                                    <th>Date of Birth</th>
+                                    <th>Passenger Type</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="passenger-details-body">
+
+                                <tr>
+                                    <td colspan="5" class="empty-table">
+                                        Loading passengers...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Additional Notes -->
+                <div class="details-card card">
+
+                    <div class="details-card-heading">
+                        <h3>Additional Notes</h3>
+                    </div>
+
+                    <div
+                        id="detail-notes"
+                        class="booking-notes"
+                    >
+                        No additional notes.
+                    </div>
+
+                </div>
+
+
+                <!-- Booking Actions -->
+                <div class="booking-detail-actions">
+
+                    <button
+                        type="button"
+                        id="convert-booking-button"
+                        class="btn btn-primary"
+                        hidden
+                    >
+                        Convert to Ticket Sale
+                    </button>
+
+                    <a href="bookings.html" class="btn btn-outline">
+                        Back to Bookings
+                    </a>
+
+                </div>
+
+
+                <!-- Footer -->
+                <footer class="dashboard-footer">
+                    © 2026 Air Ticket Agency Management. All rights reserved.
+                </footer>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+    <script src="../js/booking-details.js"></script>
+
+</body>
+</html>
