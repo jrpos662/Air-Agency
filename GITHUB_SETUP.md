@@ -1,32 +1,29 @@
-# GitHub + Supabase অটোমেটিক ডিপ্লয় সেটআপ
+# GitHub Actions দিয়ে Supabase Migration ও Edge Function অটোমেটিক Deploy
 
-main ব্রাঞ্চে push করলে `supabase/migrations` এর নতুন SQL আর `supabase/functions` এর সব Edge Function নিজে Supabase-এ চলে যাবে
-(ফাইল: `.github/workflows/supabase-deploy.yml`)।
+এই repository-তে `.github/workflows/supabase-deploy.yml` workflow আছে। `main` branch-এ Supabase migration/function/config বা workflow ফাইলে push করলে এটি চালু হবে। Actions থেকে Workflow-টি manual-ভাবেও Run workflow করা যায়।
 
-## একবারের সেটআপ
+## প্রথমবার সেটআপ
 
-1. GitHub-এ নতুন **private** repository বানান (যেমন `air-agency-management`)।
-2. এই জিপের সব ফাইল repository-র রুটে আপলোড/push করুন (`supabase` আর `.github` ফোল্ডার রুটে থাকতে হবে)।
-3. Supabase-এ প্রজেক্ট বানান। এই তিনটা তথ্য সংগ্রহ করুন:
-   - **Project ID (Reference ID):** Project Settings → General
-   - **Access Token:** Supabase Dashboard → Account → Access Tokens → Generate new token
-   - **Database Password:** প্রজেক্ট বানানোর সময় দেওয়া পাসওয়ার্ড (ভুলে গেলে Project Settings → Database থেকে reset)
-4. GitHub repository → Settings → Secrets and variables → Actions → **New repository secret**-এ তিনটা secret বানান:
-   - `SUPABASE_PROJECT_ID`
-   - `SUPABASE_ACCESS_TOKEN`
-   - `SUPABASE_DB_PASSWORD`
-5. Actions ট্যাবে গিয়ে **Deploy Supabase** → **Run workflow** দিন (অথবা main-এ যেকোনো push)।
-   প্রথমবারে ৩১টা migration ক্রমানুসারে চলবে, তারপর সব Edge Function ডিপ্লয় হবে।
+1. ZIP extract করুন এবং **extract করা ফোল্ডারের ভেতরের সব ফাইল** repository root-এ upload করুন। ZIP ফাইলটিকে শুধু repository-তে রেখে দিলে workflow/SQL চালু হবে না। `.github` ও `supabase` ফোল্ডার repository root-এ থাকতে হবে।
+2. GitHub repository → Settings → Secrets and variables → Actions-এ নিচের repository secrets যোগ করুন:
+   - `SUPABASE_ACCESS_TOKEN` — Supabase Account Access Token
+   - `SUPABASE_DB_PASSWORD` — target project-এর database password
+   - `SUPABASE_PROJECT_ID` — target project-এর Project Reference ID
+3. GitHub → Actions → **Deploy Supabase (migrations + Edge Functions)** → Run workflow.
+4. Job-টি project link করবে, migration status দেখাবে, pending migration `supabase db push --linked --yes` দিয়ে প্রয়োগ করবে, পরে status পুনরায় দেখাবে এবং migrations সফল হলে Edge Functions deploy করবে।
 
-## পরে নতুন SQL যোগ করলে
-`supabase/migrations/` এ আগের সবচেয়ে বড় নম্বরের পরের নম্বর দিয়ে ফাইল বানান (যেমন `032_add-something.sql`), তারপর main-এ push করুন।
-আগে চলে যাওয়া ফাইল কখনো বদলাবেন না, বদলাতে হলে নতুন নম্বরে নতুন ফাইল বানান।
+## সতর্কতা: existing database
 
-## ফ্রন্টএন্ডের Supabase সংযোগ
-`js/supabase-config.js`-এ Project URL আর **anon/publishable key** বসান।
-`service_role` key কখনো এই ফাইলে বা GitHub-এ রাখবেন না।
+Migration চালানোর আগে নিশ্চিত করুন `SUPABASE_PROJECT_ID` ঠিক সেই project-এর ID, যেটিতে আপনার বর্তমান ডেটা আছে। Migration history ও বাস্তব schema মিল না থাকলে CLI pending migration চালাতে পারে এবং কোনো migration conflict/error হতে পারে। Workflow database reset করে না; `db push` ব্যবহার করে। তবুও production data-র backup নিয়ে প্রথম deploy করা উত্তম। Workflow fail করলে Actions log-এর error ঠিক না করে বারবার deploy করবেন না।
 
-## সতর্কতা
-- Supabase-এর নিজস্ব "GitHub Integration" একই সঙ্গে চালু করবেন না, নইলে একই migration দুইবার চালানোর চেষ্টা হতে পারে। শুধু এই workflow ব্যবহার করুন।
-- কোনো migration-এ error থাকলে workflow লাল হবে এবং Edge Function ডিপ্লয় হবে না। Actions-এর লগ দেখে ফাইল ঠিক করে আবার push করুন।
-- ফ্রন্টএন্ড (HTML/CSS/JS) হোস্টিং আলাদা বিষয়; এই workflow শুধু Supabase-এর জন্য।
+## পরবর্তী migration
+
+নতুন migration ফাইল আগের সর্বোচ্চ version-এর পরের নম্বর দিয়ে `supabase/migrations/`-এ রাখুন (উদাহরণ `033_new-feature.sql`), commit/push করুন। আগে deployed migration file edit করবেন না; নতুন migration দিয়ে পরিবর্তন করুন।
+
+## Frontend secrets
+
+`js/supabase-config.js`-এ শুধু Supabase URL ও anon/publishable key থাকবে। `service_role` key কখনো frontend বা GitHub repository-তে রাখবেন না।
+
+## Hosting
+
+এই workflow শুধু Supabase Database migrations ও Edge Functions deploy করে। Cloudflare Pages/Workers frontend deploy আলাদা hosting workflow/connection দিয়ে হবে।

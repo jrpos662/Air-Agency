@@ -32,9 +32,9 @@
             { href: "refunds.html",           icon: "↩", label: "Refunds & Changes" },
             { href: "reports.html",           icon: "▧", label: "Reports" },
             { href: "receipts.html",          icon: "▤", label: "Receipts & Invoices" },
-            { href: "staff.html",             icon: "♧", label: "Staff Management", roles: ["owner", "manager"] },
-            { href: "settings.html",          icon: "⚙", label: "Settings",         roles: ["owner", "manager"] },
-            { href: "audit-logs.html",        icon: "◷", label: "Audit Logs",       roles: ["owner", "manager"] }
+            { href: "staff.html",             icon: "♧", label: "Staff Management" },
+            { href: "settings.html",          icon: "⚙", label: "Settings" },
+            { href: "audit-logs.html",        icon: "◷", label: "Audit Logs" }
         ]}
     ];
 
@@ -86,20 +86,56 @@
             '<nav class="sidebar-nav" aria-label="Main navigation">' + buildNav(currentPage()) + '</nav>' +
             '<div class="sidebar-footer"><p>Air Ticket Agency Management</p><small>Version 1.0</small></div>';
 
-        // Keep the active link visible in a long menu.
+        // Keep the active link visible inside the sidebar only; never scroll
+        // the document itself while a page is initializing.
+        var nav = sidebar.querySelector(".sidebar-nav");
         var activeLink = sidebar.querySelector(".nav-link.active");
-        if (activeLink && activeLink.scrollIntoView) {
-            activeLink.scrollIntoView({ block: "center" });
+        if (nav && activeLink) {
+            var linkTop = activeLink.offsetTop;
+            var linkBottom = linkTop + activeLink.offsetHeight;
+            if (linkTop < nav.scrollTop) nav.scrollTop = linkTop;
+            else if (linkBottom > nav.scrollTop + nav.clientHeight) {
+                nav.scrollTop = linkBottom - nav.clientHeight;
+            }
         }
     }
 
-    // Hide admin-only links for roles that should not see them.
-    // (Display only - real protection is Supabase RLS / Edge Functions.)
+    // Menu visibility is only a UX hint. Backend/RLS must enforce access.
+    // If role lookup fails, leave links visible so pages remain discoverable;
+    // their own authorization checks will block unauthorized actions.
     function applyRole(role) {
-        role = String(role || "").toLowerCase();
+        role = String(role || "").trim().toLowerCase();
+        if (!role) return;
+        document.body.dataset.userRole = role;
         document.querySelectorAll(".sidebar [data-roles]").forEach(function (a) {
             a.hidden = a.dataset.roles.split(",").indexOf(role) === -1;
         });
+    }
+
+    async function resolveRole() {
+        if (document.body.dataset.userRole) {
+            applyRole(document.body.dataset.userRole);
+            return;
+        }
+        try {
+            if (!window.AuthManager) return;
+            await window.AuthManager.initialize();
+            var user = await window.AuthManager.getCurrentUser();
+            if (!user || !window.supabaseClient) return;
+            var result = await window.supabaseClient
+                .from("profiles")
+                .select("role, is_active")
+                .eq("id", user.id)
+                .maybeSingle();
+            if (result.error) throw result.error;
+            if (result.data && result.data.is_active === true) {
+                applyRole(result.data.role);
+            }
+        } catch (error) {
+            // Keep the navigation discoverable. Page-level/backend guards
+            // remain responsible for security and will show access messages.
+            console.warn("Sidebar role lookup unavailable:", error.message || error);
+        }
     }
 
     function init() {
@@ -135,14 +171,9 @@
         });
         window.addEventListener("resize", function () { if (!isMobile()) { close(); } });
 
-        // Apply role visibility as soon as the profile is known.
-        var tries = 0;
-        var timer = setInterval(function () {
-            tries++;
-            var role = document.body.dataset.userRole;
-            if (role) { applyRole(role); clearInterval(timer); }
-            else if (tries > 50) { clearInterval(timer); }
-        }, 200);
+        // Resolve the role on every page (not just Dashboard). This prevents
+        // role-restricted menu entries disappearing on detail/secondary pages.
+        resolveRole();
     }
 
     if (document.readyState === "loading") {

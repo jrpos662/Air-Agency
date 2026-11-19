@@ -39,11 +39,12 @@
                 throw new Error("Supabase client is unavailable.");
             }
 
-            await loadCurrentProfile(session.user);
-
+            // Initialize the tabs and form listeners before profile/database
+            // reads so a permission error cannot leave the UI unresponsive.
             initializeSettingsTabs();
             initializeSettingsForms();
 
+            await loadCurrentProfile(session.user);
             await loadSettings();
 
         } catch (error) {

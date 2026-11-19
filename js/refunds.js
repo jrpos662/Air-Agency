@@ -54,13 +54,10 @@
                 throw new Error("Authentication controller is unavailable.");
             }
 
+            // Initialize the shared Supabase client and restore the auth session
+            // directly; checkSession() can return null while the persisted
+            // session is still restoring on this page.
             await window.AuthManager.initialize();
-
-            const session = await window.AuthManager.checkSession();
-
-            if (!session || !session.user) {
-                return;
-            }
 
             supabase = window.supabaseClient;
 
@@ -68,7 +65,27 @@
                 throw new Error("Supabase client is unavailable.");
             }
 
-            await loadCurrentProfile(session.user);
+            const { data: sessionData, error: sessionError } =
+                await supabase.auth.getSession();
+            if (sessionError) throw sessionError;
+
+            let authenticatedUser = sessionData?.session?.user || null;
+
+            // Fallback to Supabase's user lookup if getSession() has not yet
+            // populated the persisted session.
+            if (!authenticatedUser) {
+                const { data: userData, error: userError } =
+                    await supabase.auth.getUser();
+                if (userError) throw userError;
+                authenticatedUser = userData?.user || null;
+            }
+
+            if (!authenticatedUser) {
+                showMessage("Please sign in to access refunds.", "warning");
+                return;
+            }
+
+            await loadCurrentProfile(authenticatedUser);
 
             initializeRefundEvents();
 
@@ -103,7 +120,9 @@
         if (error) throw error;
 
         if (!data || data.is_active !== true) {
+            currentProfile = null;
             await window.AuthManager.logout();
+            showMessage("Your account is inactive or profile is unavailable. Contact the Owner.", "error");
             return;
         }
 
