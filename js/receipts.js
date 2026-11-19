@@ -552,6 +552,78 @@
             formatMoney(receipt.amount)
         );
 
+        const AS = window.AppSettings;
+        const settingsHeader = AS
+            ? AS.headerHtml(AS.receiptTitle("Payment Receipt"))
+            : "<h1>Air Ticket Agency</h1><p>Payment Receipt</p>";
+        const receiptHeading = "CUSTOMER PAYMENT RECEIPT";
+        const footerHtml = (AS
+            ? AS.footerLines([
+                "This receipt confirms the payment received.",
+                "Thank you for choosing our agency.",
+                "Computer-generated receipt."
+            ])
+            : ["Computer-generated receipt."]
+        ).map((line) => `<p>${escapeHTML(line)}</p>`).join("");
+        const paper = AS ? AS.paper() : { page: "A4", width: "210mm" };
+        const copyCount = AS ? AS.copies() : 1;
+        const pageCss = `@page { size: ${paper.page}; margin: 8mm; }
+            .receipt { max-width: ${paper.width === "210mm" || paper.width === "148mm" ? "650px" : paper.width}; }
+            .copy-break { page-break-after: always; }`;
+
+        const receiptOnce = `
+                <main class="receipt">
+
+                    <header class="header">
+                        ${settingsHeader}
+                    </header>
+
+                    <div class="title">${receiptHeading}</div>
+
+                    <table class="details">
+                        <tr>
+                            <td>Receipt Number</td>
+                            <td><strong>${safeReference}</strong></td>
+                        </tr>
+
+                        <tr>
+                            <td>Payment Date</td>
+                            <td>${safeDate}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Customer Name</td>
+                            <td>${safeName}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Customer Phone</td>
+                            <td>${safePhone || "—"}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Payment Method</td>
+                            <td>${safeMethod}</td>
+                        </tr>
+                    </table>
+
+                    <div class="amount">
+                        <span>Amount Received</span>
+                        <strong>${safeAmount}</strong>
+                    </div>
+
+                    <footer class="footer">
+                        ${footerHtml}
+                    </footer>
+
+                </main>
+        `;
+        const receiptCopies = Array.from({ length: copyCount })
+            .map((_, i) => i < copyCount - 1
+                ? receiptOnce + '<div class="copy-break"></div>'
+                : receiptOnce)
+            .join("");
+
         printWindow.document.open();
 
         printWindow.document.write(`
@@ -662,58 +734,12 @@
                             padding: 10px;
                         }
                     }
+                ${pageCss}
                 </style>
             </head>
 
             <body>
-                <main class="receipt">
-
-                    <header class="header">
-                        <h1>Air Ticket Agency</h1>
-                        <p>Payment Receipt</p>
-                    </header>
-
-                    <div class="title">CUSTOMER PAYMENT RECEIPT</div>
-
-                    <table class="details">
-                        <tr>
-                            <td>Receipt Number</td>
-                            <td><strong>${safeReference}</strong></td>
-                        </tr>
-
-                        <tr>
-                            <td>Payment Date</td>
-                            <td>${safeDate}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Customer Name</td>
-                            <td>${safeName}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Customer Phone</td>
-                            <td>${safePhone || "—"}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Payment Method</td>
-                            <td>${safeMethod}</td>
-                        </tr>
-                    </table>
-
-                    <div class="amount">
-                        <span>Amount Received</span>
-                        <strong>${safeAmount}</strong>
-                    </div>
-
-                    <footer class="footer">
-                        <p>This receipt confirms the payment received.</p>
-                        <p>Thank you for choosing our agency.</p>
-                        <p>Computer-generated receipt.</p>
-                    </footer>
-
-                </main>
+                ${receiptCopies}
 
                 <script>
                     window.onload = function () {

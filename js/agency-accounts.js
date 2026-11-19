@@ -415,6 +415,12 @@
             agencyId = getAgencyId();
 
             if (!agencyId) {
+                // Opened from the sidebar: choose an agency first.
+                window.location.replace("agencies.html");
+                return;
+            }
+
+            if (false) {
                 throw new Error("Agency ID is missing from the URL.");
             }
 
